@@ -44,11 +44,13 @@ exports.postSignInPage = async (req, res, next) => {
         // Uses the post method from GeneralAPIHandler to make an API request for authentication.
         const result = await apiHandler.post("authenticate", JSON.parse(raw));
         cookieHelper.setCookieWithExpire(res, 'email', decodeURIComponent(req.body.email), maxAgeInSeconds);
+        cookieHelper.setCookieWithExpire(res, 'token', result.token, maxAgeInSeconds);
 
         try {
             apiHandler.appendAuthorizationHeader(result.token);
-            result = await apiHandler.get(`app/userinfo/get-specific-user-info?userIdentifier=${req.body.email}`);
-        }catch{
+            await apiHandler.get(`app/userinfo/get-specific-user-info?userIdentifier=${decodeURIComponent(req.body.email)}`);
+        }catch (error){
+            console.log(error)
             return res.status(400).render('error-page', {
                 pageTitle: 'Error in Sign-In!',
                 error_header: "User Did Not Found!",
@@ -60,7 +62,7 @@ exports.postSignInPage = async (req, res, next) => {
         // Sets cookies with authentication information for the user.
         
         
-        cookieHelper.setCookieWithExpire(res, 'token', result.token, maxAgeInSeconds);
+        
         cookieHelper.setCookieWithExpire(res, 'isAuthenticated', 'true', maxAgeInSeconds);
         console.log('sign-in >> postSignInPage:: end');
         // Sends a response to the client by rendering the search-trip page for authenticated users.
