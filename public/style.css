@@ -1,0 +1,237 @@
+/* background color = #A6D1E6; icons color = #0078AA; white = #fff; grey = #8f8f8f; #114F78; #46C2CB;  #f2f0e6; ;*/
+html,body {
+  font-family: 'Montserrat';
+  text-align: center;
+  font-size: 14px;
+  height: 100%;
+  margin: 0;
+  padding: 1px 0;
+  color: #345B63;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.carousel-control-prev-icon,.carousel-control-next-icon,.carousel-indicators {
+  background-color: #345B63;
+}
+
+/* ==============================================================================  */
+/* ==================================== HEADER ==================================  */
+/* ==============================================================================  */
+
+
+.header {
+  background-color: #1a1a1a; 
+  color: #fff;
+  padding: 5px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+/* === */
+
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+.container-page {
+  max-width: 1800px; /* Adjust the max-width as needed */
+}
+
+
+
+.navbar {
+  text-align: center;
+}
+
+.navbar ul {
+  list-style: none;
+}
+
+.navbar li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #515e6b; /* Yellow on hover for a highlight effect */
+}
+
+
+
+/* ==============================================================================  */
+/* ==================================== FOOTER ==================================  */
+/* ==============================================================================  */
+
+.footer {
+  background-color: #34495e;
+  color: #fff;
+  padding: 5px 0;
+  text-align: center;
+  margin-top: auto; /* Change margin-top to auto */
+}
+
+
+
+/* ==============================================================================  */
+/* ================================== Sign: in/up ===============================  */
+/* ==============================================================================  */
+
+.sign{
+  margin: 10% auto;
+  width: 50%;
+}
+
+.sign_up_text{
+  text-align: left;
+  margin: auto;
+}
+/* =============================================================================  */
+/* ================================== Sections =================================  */
+/* =============================================================================  */
+
+.section{
+  margin: 50px 0px;
+  padding: 0px 50px;
+  
+}
+.section-header{
+  margin-bottom: 10px;
+  background-color: #D4ECDD;
+  border-color:  #345B63;
+  border-style: dashed;
+}
+
+/* =============================================================================  */
+/* ================================ error-page =================================  */
+/* =============================================================================  */
+
+
+.invalid-login-section{
+  padding-left: 300px;
+  padding-right: 300px;
+  width: 100%;
+}
+
+
+/* ==============================================================================  */
+/* ==================================== FORM ==================================  */
+/* ==============================================================================  */
+
+.form_border{
+  border-color:  #345B63;
+  border-style: dashed solid;
+  margin-bottom: 0px;
+}
+
+.form-control {
+  border-width: 2px; /* Adjust the border width as needed */
+  border-style: solid;
+  font-weight: bold; /* Make the border bold */
+  border-color: #777;
+  
+}
+
+
+.indicators-position{
+  top: auto;
+  bottom: auto;
+
+}
+/* ==============================================================================  */
+/* ==================================== CAROUSEL ==================================  */
+/* ==============================================================================  */
+
+
+.flight-details,.news-details, .places-section {
+  padding: 2%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.carousel-image {
+  max-width: 100%;
+  max-height: 300px;
+}
+
+.carousel-item{
+  margin-top: 10px;
+  height: auto;
+  position: relative;
+}
+
+.carousel-container{
+  position: absolute;
+  bottom: 0;
+  left:0;
+  right:0;
+  padding-bottom: 50px;
+}
+
+
+.card-img-overlay {
+  width: 100%; /* Ensure the image covers the entire container */
+  height: auto; /* Maintain aspect ratio */
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover; /* Ensure the image covers the entire container while maintaining its aspect ratio */
+  
+}
+
+.center-card {
+  margin-top: 5%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.category-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px; /* You can adjust the border-radius as needed */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+  width: 200px; /* Adjust the width as needed */
+  height: 150px; /* Adjust the height as needed */
+
+}
+
+.button{
+  margin-top: 1%;
+  background-color: #555; /* Dark grey */
+  color: #fff; /* White text for better contrast */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #777; /* Slightly lighter grey on hover */
+}
+
+.button-move-bot{
+  padding-bottom: 50px;
+}
+
+
+
+.card-size-outer {
+  width: 570px;
+  height: 320px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+

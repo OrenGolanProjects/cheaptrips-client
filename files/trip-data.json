@@ -1,0 +1,712 @@
+{
+    "flight": {
+        "origin": {
+            "city": {
+                "cityName": "tel aviv-yafo",
+                "cityIATACode": "TLV",
+                "timeZone": "Asia/Jerusalem",
+                "latCoordinates": 32.000454,
+                "lonCoordinates": 34.870743,
+                "expireAt": "2024-11-24T16:56:51.735+00:00",
+                "countryIATACode": "IL"
+            },
+            "country": {
+                "countryName": "israel",
+                "countryIATACode": "IL",
+                "currency": "ILS",
+                "expireAt": "2024-11-24T16:40:22.006+00:00"
+            }
+        },
+        "destination": {
+            "city": {
+                "cityName": "amsterdam",
+                "cityIATACode": "AMS",
+                "timeZone": "Europe/Amsterdam",
+                "latCoordinates": 52.373055,
+                "lonCoordinates": 4.8922224,
+                "expireAt": "2024-11-24T16:49:54.957+00:00",
+                "countryIATACode": "NL"
+            },
+            "country": {
+                "countryName": "netherlands",
+                "countryIATACode": "NL",
+                "currency": "EUR",
+                "expireAt": "2024-11-24T16:40:01.640+00:00"
+            }
+        },
+        "ticketKeys": [
+            {
+                "price": 271,
+                "transfers": 1,
+                "airlineDetails": {
+                    "name": "Lufthansa",
+                    "airlineIATACode": "LH",
+                    "expireAt": "2024-11-19T14:50:04.454+00:00",
+                    "lowCost": false
+                },
+                "flightNumber": 687,
+                "departureAt": "2024-01-31T16:35:00.000",
+                "returnAt": "2024-02-07T08:05:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 134,
+                "transfers": 0,
+                "airlineDetails": {
+                    "name": "EasyJet",
+                    "airlineIATACode": "U2",
+                    "expireAt": "2024-11-19T15:55:59.820+00:00",
+                    "lowCost": true
+                },
+                "flightNumber": 7974,
+                "departureAt": "2024-02-03T14:00:00.000",
+                "returnAt": "2024-02-06T08:15:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 112,
+                "transfers": 0,
+                "airlineDetails": {
+                    "name": "EasyJet",
+                    "airlineIATACode": "U2",
+                    "expireAt": "2024-11-19T15:55:59.820+00:00",
+                    "lowCost": true
+                },
+                "flightNumber": 7974,
+                "departureAt": "2024-03-02T14:00:00.000",
+                "returnAt": "2024-03-06T08:20:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 117,
+                "transfers": 0,
+                "airlineDetails": {
+                    "name": "EasyJet",
+                    "airlineIATACode": "U2",
+                    "expireAt": "2024-11-19T15:55:59.820+00:00",
+                    "lowCost": true
+                },
+                "flightNumber": 7972,
+                "departureAt": "2024-04-02T14:10:00.000",
+                "returnAt": "2024-04-16T08:35:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 124,
+                "transfers": 0,
+                "airlineDetails": {
+                    "name": "OpenSkies",
+                    "airlineIATACode": "EC",
+                    "expireAt": "2024-11-19T15:57:20.016+00:00",
+                    "lowCost": false
+                },
+                "flightNumber": 7972,
+                "departureAt": "2024-05-06T14:20:00.000",
+                "returnAt": "2024-05-11T08:35:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 113,
+                "transfers": 0,
+                "airlineDetails": {
+                    "name": "EasyJet",
+                    "airlineIATACode": "U2",
+                    "expireAt": "2024-11-19T15:55:59.820+00:00",
+                    "lowCost": true
+                },
+                "flightNumber": 7972,
+                "departureAt": "2024-06-04T14:10:00.000",
+                "returnAt": "2024-06-11T08:35:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 191,
+                "transfers": 0,
+                "airlineDetails": {
+                    "name": "OpenSkies",
+                    "airlineIATACode": "EC",
+                    "expireAt": "2024-11-19T15:57:20.016+00:00",
+                    "lowCost": false
+                },
+                "flightNumber": 7972,
+                "departureAt": "2024-07-11T14:20:00.000",
+                "returnAt": "2024-07-13T08:35:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 233,
+                "transfers": 1,
+                "airlineDetails": {
+                    "name": "Air Serbia",
+                    "airlineIATACode": "JU",
+                    "expireAt": "2024-11-19T14:49:59.783+00:00",
+                    "lowCost": false
+                },
+                "flightNumber": 813,
+                "departureAt": "2024-08-01T19:00:00.000",
+                "returnAt": "2024-08-12T08:35:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 209,
+                "transfers": 1,
+                "airlineDetails": {
+                    "name": "Wizz Air Malta",
+                    "airlineIATACode": "W4",
+                    "expireAt": "2024-11-19T16:01:23.116+00:00",
+                    "lowCost": true
+                },
+                "flightNumber": 6404,
+                "departureAt": "2024-09-17T21:55:00.000",
+                "returnAt": "2024-09-21T08:35:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 164,
+                "transfers": 0,
+                "airlineDetails": {
+                    "name": "Transavia",
+                    "airlineIATACode": "HV",
+                    "expireAt": "2024-11-19T16:01:21.032+00:00",
+                    "lowCost": true
+                },
+                "flightNumber": 5804,
+                "departureAt": "2024-10-29T20:45:00.000",
+                "returnAt": "2024-11-05T08:15:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 293,
+                "transfers": 1,
+                "airlineDetails": {
+                    "name": "ITA Airways",
+                    "airlineIATACode": "AZ",
+                    "expireAt": "2024-11-19T16:00:29.019+00:00",
+                    "lowCost": false
+                },
+                "flightNumber": 807,
+                "departureAt": "2024-11-19T15:20:00.000",
+                "returnAt": "2024-11-26T19:05:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            },
+            {
+                "price": 313,
+                "transfers": 2,
+                "airlineDetails": {
+                    "name": "ITA Airways",
+                    "airlineIATACode": "AZ",
+                    "expireAt": "2024-11-19T16:00:29.019+00:00",
+                    "lowCost": false
+                },
+                "flightNumber": 809,
+                "departureAt": "2024-12-03T05:15:00.000",
+                "returnAt": "2024-12-07T12:50:00.000",
+                "expiresAt": "2024-01-14T14:56:01.000",
+                "ticketIndex": "2024-01"
+            }
+        ],
+        "currency": "USD",
+        "departure_at": null,
+        "return_at": null
+    },
+    "news": {
+        "_id": "659aa7180abf1c3da29aa944",
+        "expireAt": "2024-01-14T13:28:56.308+00:00",
+        "cityName": "amsterdam",
+        "newsList": [
+            {
+                "source_name": "ProPublica",
+                "author": "by Kathleen McGrory and Neil Bedi, ProPublica, photography by Loren Elliott for ProPublica",
+                "title": "When Veterans in Crisis Can’t Get Help",
+                "description": "by Kathleen McGrory and Neil Bedi, ProPublica, photography by Loren Elliott for ProPublica \n \n\n \n This article contains descriptions of mental illness, violence and sexual assault.\n\n \n\n \n\n\n \n \n ProPublica is a nonprofit newsroom that investigates abuses of po…",
+                "url": "https://www.propublica.org/article/when-veterans-cant-access-the-psychiatric-care-they-need",
+                "urlToImage": "https://img.assets-c3.propublica.org/images/articles/20240105-MMH-OG_2024-01-05-212322_ygsz.jpg?crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=630&imgixProfile=propublicaAssets&q=90&w=1200&s=44fb7831a2dd8a85dd06c7c1be8ee590",
+                "publishedAt": "2024-01-06T10:00:00Z",
+                "content": "This article contains descriptions of mental illness, violence and sexual assault.\r\nProPublica is a nonprofit newsroom that investigates abuses of power. Sign up to receive our biggest stories as soo… [+49433 chars]",
+                "scoreSentimentAnalyzer": 2.6666666666666665
+            },
+            {
+                "source_name": "TechSpot",
+                "author": "Daniel Sims",
+                "title": "Google Maps is getting 3D building view feature in Android Auto and Apple CarPlay",
+                "description": "Users of Android Auto have noticed the ability to view 3D buildings in Google Maps during in-car navigation. While the smartphone app has offered a close-up 3D view for some time, testing suggests that Google plans to extend this feature to Android Auto and A…",
+                "url": "https://www.techspot.com/news/101426-google-maps-getting-3d-building-view-feature-android.html",
+                "urlToImage": "https://www.techspot.com/images2/news/bigimage/2019/12/2019-12-12-image-4.jpg",
+                "publishedAt": "2024-01-06T13:06:00Z",
+                "content": "Something to look forward to: The 3D view in Google Maps has become increasingly detailed and informative over the past year, offering users vivid previews of landmarks. Recent updates merge this pro… [+2523 chars]",
+                "scoreSentimentAnalyzer": 3.5
+            },
+            {
+                "source_name": "Scientific American",
+                "author": "Andy Baio",
+                "title": "New study finds coin flips aren’t 50/50",
+                "description": "after 350,757 coin tosses, partly livestreamed on Twitch by volunteers, the researcher found a slight bias toward the same side facing up #",
+                "url": "https://www.scientificamerican.com/article/scientists-destroy-illusion-that-coin-toss-flips-are-50-50/",
+                "urlToImage": "https://static.scientificamerican.com/sciam/cache/file/3FE9ABC3-2CC3-41D8-AE636C8A1CD61909_source.jpeg?w=1200",
+                "publishedAt": "2024-01-06T00:50:22Z",
+                "content": "The phrase “coin toss” is a classic synonym for randomness. But since at least the 18th century, mathematicians have suspected that even fair coins tend to land on one side slightly more often than t… [+2717 chars]",
+                "scoreSentimentAnalyzer": 2
+            },
+            {
+                "source_name": "Fratellowatches.com",
+                "author": "Thomas Van Straaten",
+                "title": "Watch Brands On Instagram — How Do They Approach It, And How Do They Differ?",
+                "description": "Instagram is often touted as a significant factor in the current popularity of mechanical watches. Whether it is celebrities and influencers “normalizing” expensive watches or aficionados sharing wrist shots, the platform is flooded with horological content. …",
+                "url": "https://www.fratellowatches.com/watch-brands-on-instagram-how-do-they-approach-it-and-how-do-they-differ/",
+                "urlToImage": "https://www.fratellowatches.com/cdn-cgi/image/anim=false/wp-content/uploads/2023/04/jaeger-lecoultre-reversotributesmallseconds-blackdial-levitation-16-9-4.jpg",
+                "publishedAt": "2024-01-06T06:00:42Z",
+                "content": "Instagram is often touted as a significant factor in the current popularity of mechanical watches. Whether it is celebrities and influencers normalizing expensive watches or aficionados sharing wrist… [+7276 chars]",
+                "scoreSentimentAnalyzer": 2
+            },
+            {
+                "source_name": "FourFourTwo",
+                "author": "Steven Chicken",
+                "title": "West Ham United eye former Tottenham winger amid exit rumours",
+                "description": "The Hammers are looking to move players out this month with speculation persisting around Nayef Aguerd's future",
+                "url": "https://www.fourfourtwo.com/news/west-ham-united-eye-former-tottenham-winger-amid-exit-rumours",
+                "urlToImage": "https://cdn.mos.cms.futurecdn.net/9CLVQvn6cgQgy4TVBjXxr5-1200-80.jpg",
+                "publishedAt": "2024-01-06T12:31:19Z",
+                "content": "Former Tottenham Hotspur winger Steven Bergwijn is on West Ham United’s radar in the event that they free up some budget for themselves through January departures, according to Fabrizio Romano.\r\nThe … [+1681 chars]",
+                "scoreSentimentAnalyzer": 2
+            },
+            {
+                "source_name": "Roanoke Times",
+                "author": "The Roanoke Times",
+                "title": "Botetourt County Public Schools to hold town halls on secondary facilities",
+                "description": "The meetings start next week.",
+                "url": "https://roanoke.com/news/local/education/botetourt-county-public-schools-to-hold-town-halls-on-secondary-facilities/article_b5191a26-abeb-11ee-8ccc-a3e231b69cfe.html",
+                "urlToImage": "https://bloximages.newyork1.vip.townnews.com/roanoke.com/content/tncms/custom/image/00f1ee32-f2d0-11e6-9926-f7249dbfe53a.jpg?resize=600%2C315",
+                "publishedAt": "2024-01-06T11:30:00Z",
+                "content": "Botetourt County Public Schools will be holding several town hall events to continue the larger conversation about the school divisions secondary facilities.\r\nMeetings are organized by school board m… [+956 chars]",
+                "scoreSentimentAnalyzer": 3
+            },
+            {
+                "source_name": "Fly4free.com",
+                "author": "João",
+                "title": "STILL AVAILABLE Open jaw flights from several European cities to many destinations in Africa from €253",
+                "description": "Take advantage of this amazing deal and book open jaw full-service flights from several European cities to incredible destinations in Africa like Ethiopia, Mauritius, Seychelles, Madagascar, South Africa, Uganda, Kenya, Tanzania or Zimbabwe from €253!",
+                "url": "https://www.fly4free.com/flight-deals/europe/cheap-flights-to-africa-2-2/",
+                "urlToImage": "https://assets.fly4free.com/wp-content/uploads/2023/08/Seychelles_Unsplash-800x472.jpg",
+                "publishedAt": "2024-01-06T12:15:09Z",
+                "content": "Take advantage of this amazing deal and book open jaw full-service flights from several European cities to incredible destinations in Africa like Ethiopia, Mauritius, Seychelles, Madagascar, South Af… [+1548 chars]",
+                "scoreSentimentAnalyzer": 2
+            },
+            {
+                "source_name": "KTRK-TV",
+                "author": "Amy Becker",
+                "title": "'General Hospital' to say goodbye to beloved character of 45 years",
+                "description": "Bobbie Spencer, portrayed by the late Jacklyn Zeman for over 45 years, will receive a two-episode tribute this week on 'General Hospital.'",
+                "url": "https://abc13.com/general-hospital-bobbie-spencer-jacklyn-zeman-tribute/14280955/",
+                "urlToImage": "https://cdn.abcotvs.com/dip/images/14280958_Untitled-2.jpg?w=1600",
+                "publishedAt": "2024-01-06T04:49:27Z",
+                "content": "LOS ANGELES -- After the commemorative 60th anniversary primetime special, \"General Hospital\" is back with another heart-wrenching week of programming, where they'll pay tribute to the beloved charac… [+1587 chars]",
+                "scoreSentimentAnalyzer": 2
+            }
+        ],
+        "newsListCount": 8
+    },
+    "placesData": {
+        "radius": 10000,
+        "lon": 4.8922224,
+        "lat": 52.373055,
+        "limitPlaces": 2,
+        "city": "amsterdam",
+        "countryIATAcode": "NL",
+        "databaseKey": "NL_amsterdam",
+        "kindsCategory": {
+            "categories": [
+                {
+                    "name": "accomodations",
+                    "places": [
+                        {
+                            "xid": "N251149366",
+                            "name": "swissotel amsterdam",
+                            "rate": null,
+                            "kinds": "accomodations,other_hotels",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/N251149366",
+                            "point": {
+                                "lon": 4.893322944641113,
+                                "lat": 52.37358093261719
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012LP",
+                                "country_code": "nl",
+                                "house_number": "96",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "node/251149366",
+                            "url": "https://www.booking.com/hotel/nl/swissotel.html",
+                            "wikidata": "Q18393172",
+                            "image": "https://commons.wikimedia.org/wiki/File:Swissotel_Amsterdam.jpg",
+                            "preview": null,
+                            "wikipedia_extracts": ""
+                        },
+                        {
+                            "xid": "N251149361",
+                            "name": "hotel amsterdam de roode leeuw",
+                            "rate": null,
+                            "kinds": "accomodations,other_hotels",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/N251149361",
+                            "point": {
+                                "lon": 4.8935136795043945,
+                                "lat": 52.37369918823242
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012LJ",
+                                "country_code": "nl",
+                                "house_number": "93",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "node/251149361",
+                            "url": "https://www.booking.com/hotel/nl/amsterdam.html",
+                            "wikidata": "",
+                            "image": "",
+                            "preview": "",
+                            "wikipedia_extracts": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "interesting_places",
+                    "places": [
+                        {
+                            "xid": "Q98075274",
+                            "name": "Poppenkast op de Dam",
+                            "rate": null,
+                            "kinds": "theatres_and_entertainments,cultural,interesting_places,other_theatres",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/Q98075274",
+                            "point": {
+                                "lon": 4.89247989654541,
+                                "lat": 52.3731689453125
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012 NP",
+                                "country_code": "nl",
+                                "house_number": "2",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "",
+                            "url": "",
+                            "wikidata": "Q98075274",
+                            "image": "https://commons.wikimedia.org/wiki/File:Voor_het_eerst_dit_seizoen_is_er_weer_poppenkast_op_de_Dam%2C_Bestanddeelnr_het_eerst_dit_seizoen_weer_poppenkast_op_de_Dam.jpg",
+                            "preview": null,
+                            "wikipedia_extracts": ""
+                        },
+                        {
+                            "xid": "Q2289998",
+                            "name": "Naatje of Dam Square",
+                            "rate": null,
+                            "kinds": "historic,monuments_and_memorials,burial_places,interesting_places,other_burial_places,monuments",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/Q2289998",
+                            "point": {
+                                "lon": 4.892591953277588,
+                                "lat": 52.373111724853516
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012 NP",
+                                "country_code": "nl",
+                                "house_number": "2",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "",
+                            "url": "",
+                            "wikidata": "Q2289998",
+                            "image": "https://commons.wikimedia.org/wiki/File:Dirk_Wijbrand_Tollenaar_Wz%2C_%281808-1858%29%2C_Afb_010097004844.jpg",
+                            "preview": null,
+                            "wikipedia_extracts": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "adult",
+                    "places": [
+                        {
+                            "xid": "N5752436078",
+                            "name": "ClubNL",
+                            "rate": null,
+                            "kinds": "nightclubs,adult",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/N5752436078",
+                            "point": {
+                                "lon": 4.8909382820129395,
+                                "lat": 52.372108459472656
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "Nieuwezijds Voorburgwal",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012RK",
+                                "country_code": "nl",
+                                "house_number": "169A",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "node/5752436078",
+                            "url": "",
+                            "wikidata": "",
+                            "image": "",
+                            "preview": "",
+                            "wikipedia_extracts": ""
+                        },
+                        {
+                            "xid": "N483553148",
+                            "name": "Gall & Gall",
+                            "rate": null,
+                            "kinds": "alcohol,adult",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/N483553148",
+                            "point": {
+                                "lon": 4.890259265899658,
+                                "lat": 52.3726921081543
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "Spuistraat",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012 VV",
+                                "country_code": "nl",
+                                "house_number": "226-A",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "node/483553148",
+                            "url": "https://www.gall.nl",
+                            "wikidata": "",
+                            "image": "",
+                            "preview": "",
+                            "wikipedia_extracts": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "amusements",
+                    "places": [
+                        {
+                            "xid": "N4427960898",
+                            "name": "Sauna Deco",
+                            "rate": null,
+                            "kinds": "baths_and_saunas,saunas,amusements",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/N4427960898",
+                            "point": {
+                                "lon": 4.889740943908691,
+                                "lat": 52.37623977661133
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "Herengracht",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1015 BE",
+                                "country_code": "nl",
+                                "house_number": "115-c",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "node/4427960898",
+                            "url": "http://www.saunadeco.nl",
+                            "wikidata": "",
+                            "image": "",
+                            "preview": "",
+                            "wikipedia_extracts": ""
+                        },
+                        {
+                            "xid": "N4405530665",
+                            "name": "Sauna Nieuwezijds",
+                            "rate": null,
+                            "kinds": "baths_and_saunas,saunas,amusements",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/N4405530665",
+                            "point": {
+                                "lon": 4.895908832550049,
+                                "lat": 52.37702178955078
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012NB",
+                                "country_code": "nl",
+                                "house_number": "95",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "node/4405530665",
+                            "url": "https://www.saunanieuwezijds.nl/",
+                            "wikidata": "Q19355656",
+                            "image": "",
+                            "preview": "",
+                            "wikipedia_extracts": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "sport",
+                    "places": [
+                        {
+                            "xid": "Q19884265",
+                            "name": "Heiligewegbad",
+                            "rate": null,
+                            "kinds": "sport,pools",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/Q19884265",
+                            "point": {
+                                "lon": 4.8907999992370605,
+                                "lat": 52.367698669433594
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012XR",
+                                "country_code": "nl",
+                                "house_number": "26",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "",
+                            "url": "",
+                            "wikidata": "Q19884265",
+                            "image": "https://commons.wikimedia.org/wiki/File:Poortje_gevangenis_-_Amsterdam_-_20017122_-_RCE.jpg",
+                            "preview": null,
+                            "wikipedia_extracts": ""
+                        },
+                        {
+                            "xid": "W221058014",
+                            "name": "Het Marnix",
+                            "rate": null,
+                            "kinds": "sport,pools",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/W221058014",
+                            "point": {
+                                "lon": 4.878262996673584,
+                                "lat": 52.3779411315918
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "Marnixplein",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1015ZN",
+                                "country_code": "nl",
+                                "house_number": "1",
+                                "neighbourhood": "Jordaan"
+                            },
+                            "osm": "way/221058014",
+                            "url": "https://www.hetmarnix.nl/",
+                            "wikidata": "Q30141175",
+                            "image": "",
+                            "preview": "",
+                            "wikipedia_extracts": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "tourist_facilities",
+                    "places": [
+                        {
+                            "xid": "N298094242",
+                            "name": "Rabobank",
+                            "rate": null,
+                            "kinds": "banks,bank,tourist_facilities",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/N298094242",
+                            "point": {
+                                "lon": 4.891903877258301,
+                                "lat": 52.37263870239258
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012NP",
+                                "country_code": "nl",
+                                "house_number": "16",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "node/298094242",
+                            "url": "",
+                            "wikidata": "",
+                            "image": "",
+                            "preview": "",
+                            "wikipedia_extracts": ""
+                        },
+                        {
+                            "xid": "N2721722530",
+                            "name": "Dam Good Coffee",
+                            "rate": null,
+                            "kinds": "foods,cafes,tourist_facilities",
+                            "sources": null,
+                            "otm": "https://opentripmap.com/en/card/N2721722530",
+                            "point": {
+                                "lon": 4.892304420471191,
+                                "lat": 52.373600006103516
+                            },
+                            "address": {
+                                "city": "Amsterdam",
+                                "road": "",
+                                "state": "Noord-Holland",
+                                "suburb": "Amsterdam",
+                                "country": "Nederland",
+                                "postcode": "1012NP",
+                                "country_code": "nl",
+                                "house_number": "10",
+                                "neighbourhood": "Centrum"
+                            },
+                            "osm": "node/2721722530",
+                            "url": "https://www.facebook.com/pg/Dam-Good-Coffee-579044375548221",
+                            "wikidata": "",
+                            "image": "",
+                            "preview": "",
+                            "wikipedia_extracts": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        "expireAt": "2024-11-19T16:33:12.831+00:00",
+        "id": "655b8a4bf8094e1246d774ae"
+    }
+}
