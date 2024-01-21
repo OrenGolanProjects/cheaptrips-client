@@ -41,12 +41,13 @@ exports.postSignInPage = async (req, res, next) => {
         const raw = JSON.stringify({"email": req.body.email, "password": req.body.password});
         console.log(`sign-in >> postSignInPage:: body: ${raw}`);
 
-        // Uses the post method from GeneralAPIHandler to make an API request for authentication.
-        const result = await apiHandler.post("authenticate", JSON.parse(raw));
-        cookieHelper.setCookieWithExpire(res, 'email', decodeURIComponent(req.body.email), maxAgeInSeconds);
-        cookieHelper.setCookieWithExpire(res, 'token', result.token, maxAgeInSeconds);
 
         try {
+            // Uses the post method from GeneralAPIHandler to make an API request for authentication.
+            const result = await apiHandler.post("authenticate", JSON.parse(raw));
+            cookieHelper.setCookieWithExpire(res, 'email', decodeURIComponent(req.body.email), maxAgeInSeconds);
+            cookieHelper.setCookieWithExpire(res, 'token', result.token, maxAgeInSeconds);
+
             apiHandler.appendAuthorizationHeader(result.token);
             await apiHandler.get(`app/userinfo/get-specific-user-info?userIdentifier=${decodeURIComponent(req.body.email)}`);
         }catch (error){

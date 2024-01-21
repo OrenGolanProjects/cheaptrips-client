@@ -36,30 +36,33 @@ exports.postSignUpPage = async (req,res,next) =>{
         console.log('sign-up >> postSignUpPage :: start.');
 
         if(req.body.password===req.body.confirm_password){
-        // Converts the user's input into a JSON string.
-        const raw = JSON.stringify(
-            {
-                "jwtRequest": {
-                    "email": req.body.email,
-                    "password": req.body.password
-                },
-                "userInfoRequest": {
-                    "userName": req.body.userName,
-                    "firstName": req.body.firstName,
-                    "surName": req.body.surName, 
-                    "phone": req.body.phone
+            console.log("postSignUpPage BODDDYYY")
+            console.log(req.body)
+
+            // Converts the user's input into a JSON string.
+            const raw = JSON.stringify(
+                {
+                    "jwtRequest": {
+                        "email": req.body.email,
+                        "password": req.body.password
+                    },
+                    "userInfoRequest": {
+                        "userName": req.body.userName,
+                        "firstName": req.body.firstName,
+                        "surName": req.body.surname, 
+                        "phone": req.body.phone
+                    }
                 }
-            }
-        );
-        console.log(`sign-in >> postSignInPage:: body: ${raw}`);
+            );
+            console.log(`sign-in >> postSignInPage:: body: ${raw}`);
 
-        // Uses the post method from GeneralAPIHandler to make an API request for authentication.
-        const result = await apiHandler.post("user", JSON.parse(raw));
-        console.log(`sign-up >> postSignUpPage:: Sign-up successfully done.`);
+            // Uses the post method from GeneralAPIHandler to make an API request for authentication.
+            const result = await apiHandler.post("user", JSON.parse(raw));
+            console.log(`sign-up >> postSignUpPage:: Sign-up successfully done.`);
 
-        const maxAgeInSeconds = 5 * 60 * 60; // 5 hours in seconds
-        cookieHelper.setCookieWithExpire(res, 'token', `${result.token}`, maxAgeInSeconds);
-        cookieHelper.setCookieWithExpire(res, 'isAuthenticated', 'true', maxAgeInSeconds);
+            const maxAgeInSeconds = 5 * 60 * 60; // 5 hours in seconds
+            cookieHelper.setCookieWithExpire(res, 'token', `${result.token}`, maxAgeInSeconds);
+            cookieHelper.setCookieWithExpire(res, 'isAuthenticated', 'true', maxAgeInSeconds);
         }
         else{
                 // Handles errors or sends an error response for invalid sign-in attempts.

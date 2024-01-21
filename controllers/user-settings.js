@@ -5,6 +5,7 @@ const apiHandler = new GeneralAPIHandler();             // Creating an instance 
 
 
 exports.getUserDisplay = async (req, res, next) => {
+    let userData = {}; 
     try {
         console.log('user-settings >> getUserDisplay :: start.');
         const cookies = cookieHelper.extractCookies(req);
@@ -13,19 +14,23 @@ exports.getUserDisplay = async (req, res, next) => {
             return res.redirect('/');
         }
 
-        let  userData = {};
-
         if('userData' in cookies){
+            console.log('user-settings >> getUserDisplay :: userData in cookies.');
             // Parse JSON data from the cookie
             userData = JSON.parse(cookies.userData)
         }else{
+            console.log('user-settings >> getUserDisplay :: execute get specic user.');
+            console.log(cookies.token);
+            console.log(cookies.email);
             apiHandler.appendAuthorizationHeader(cookies.token);
             const result = await apiHandler.get(`app/userinfo/get-specific-user-info?userIdentifier=${cookies.email}`);
 
-            const userData = {
-                "username": result.username,
+            console.log(result)
+
+            userData = {
+                "userName": result.userName,
                 "firstName": result.firstName,
-                "lastname": result.lastname, 
+                "surName": result.surName, 
                 "email": result.email,
                 "phone": result.phone
             }
@@ -57,6 +62,8 @@ exports.getUserDisplay = async (req, res, next) => {
 }
 
 exports.putUpdateUser = async(req,res,next)=>{
+    let userData = {};
+
     try{
         console.log('user-settings >> putUpdateUser :: start.');
         const cookies = cookieHelper.extractCookies(req);
@@ -65,11 +72,11 @@ exports.putUpdateUser = async(req,res,next)=>{
             return res.redirect('/');
         }
 
-        const userData = JSON.stringify(
+        userData = JSON.stringify(
             {
-                "userName": req.body.username,
+                "userName": req.body.userName,
                 "firstName": req.body.firstName,
-                "surName": req.body.lastName, 
+                "surName": req.body.surname, 
                 "phone": req.body.phone
             }
         );
