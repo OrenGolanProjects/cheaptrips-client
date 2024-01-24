@@ -1,5 +1,6 @@
 <footer class="footer">
     <div class="container">
+        <!-- Copyright Information -->
         <p>&copy; 2024 CheapTrips</p>
     </div>
 </footer>
@@ -13,7 +14,7 @@
 <!-- search-trip.ejs file -->
 <!-- -------------------- -->
 
-<!-- function that manage the range of the selection -->
+<!-- Function to Manage Range Selection -->
 <script>
     function updateDistance(value) {
         document.getElementById('selectedDistance').textContent = value + ' km';
@@ -24,7 +25,7 @@
     }
 </script>
 
-<!-- function that format the date into yyyy-MM-dd -->
+<!-- Function to Format Date into yyyy-MM-dd -->
 <script>
     function formatDate(input) {
         // Get the selected date from the input field
@@ -46,19 +47,23 @@
     }
 </script>
 
-<!-- Display the dates in the search trip page -->
+<!-- Display Dates in the Search Trip Page -->
 <script>
     function toggleDateInputs() {
-        const departureDateInput = document.getElementById('dates');
+        
+        const monthsDiv = document.getElementById('months');
+        // const departureDateInput = document.getElementById('dates');
         const tripMonthsRadio = document.getElementById('trip-months');
 
         // If "Search By Months" is selected, hide date inputs; otherwise, show them
         if (tripMonthsRadio.checked) {
+            monthsDiv.classList.remove('col-md-6');
+            monthsDiv.classList.add('sign');
             dates.style.display = 'none';
-
         } else {
             dates.style.display = 'block';
-
+            monthsDiv.classList.remove('sign');
+            monthsDiv.classList.add('col-md-6');
         }
     }
 
@@ -70,13 +75,12 @@
 <!-- select-city.ejs file -->
 <!-- -------------------- -->
 
-<!-- function that show the modal -->
+<!-- Function to Show the Modal -->
 <script>
     $(document).ready(function () {
         $('#cityModel').modal('show');
     });
 </script>
-
 
 </body>
 </html>

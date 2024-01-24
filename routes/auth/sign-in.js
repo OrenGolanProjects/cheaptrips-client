@@ -1,14 +1,16 @@
+// ==============================
+// === Sign-In Routes ===
+// ==============================
+
 // Importing the 'express' library to create a web server
 const express = require('express');
 const routes = express.Router();
 const userController = require('../../controllers/sign-in');
 
-// "/" => GET
-routes.get('/',userController.getSignInPage)
-routes.get('/sign-in',)
+// GET route for displaying the sign-in page
+routes.get('/', userController.getSignInPage);
 
+// POST route for handling sign-in form submissions
+routes.post('/sign-in', userController.postSignInPage);
 
-// "/sign-in" => POST
-routes.post('/sign-in',userController.postSignInPage)
-
-exports.routes = routes;
+module.exports.routes = routes;

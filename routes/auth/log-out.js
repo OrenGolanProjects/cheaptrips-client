@@ -1,8 +1,13 @@
+// ==============================
+// === Log-Out Routes ===
+// ==============================
+
 // Importing the 'express' library to create a web server
 const express = require('express');
 const routes = express.Router();
-const logoutControler = require('../../controllers/log-out');
+const logoutController = require('../../controllers/log-out');
 
-routes.post('/logout',logoutControler.postLogout)
+// POST route for handling user logout
+routes.post('/logout', logoutController.postLogout);
 
-exports.routes = routes;
+module.exports.routes = routes;

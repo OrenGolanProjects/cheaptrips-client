@@ -1,25 +1,38 @@
 <header class="header">
+    <!-- Page container -->
     <div class="container container-page">
+        <!-- Row for navigation -->
         <div class="row">
+            <!-- Navbar -->
             <nav class="navbar">
+                <!-- Logo column -->
                 <div class="col-sm logo">
                     <h1>CheapTrips</h1>
                 </div>
+                <!-- Navigation links column -->
                 <div class="col-sm">
                     <ul>
+                        <!-- Home link -->
                         <li><a href="/">Home</a></li>
+                        <!-- Sign-up link -->
                         <li><a href="/sign-up">Sign-up</a></li>
+                        <!-- Search-Trips link -->
                         <li><a href="/search-trips">Search-Trips</a></li>
+                        <!-- User-Settings link -->
                         <li><a href="/user-settings">User-Settings</a></li>
                     </ul>
                 </div>
+                <!-- Authentication status column -->
                 <div class="col-sm">
-                    <ul >
+                    <ul>
+                        <!-- Conditional rendering based on authentication status -->
                         <% if (isAuthenticated==='false') { %>
+                            <!-- Log-in link for non-authenticated users -->
                             <li class="main-header__item">
-                                <a  href="/">Log-in</a>
+                                <a href="/">Log-in</a>
                             </li>
                         <% } else { %>
+                            <!-- Log-out button for authenticated users -->
                             <li class="main-header__item">
                                 <form action="/logout" method="POST">
                                     <button type="submit">Log-out</button>
@@ -30,6 +43,5 @@
                 </div>
             </nav>
         </div>
-        
     </div>
 </header>

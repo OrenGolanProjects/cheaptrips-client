@@ -5,20 +5,22 @@
 <body class="h-100">
     <%- include('includes/navigation.ejs') %>
     <main class="container">
+        <!-- User Settings Section -->
         <section class="sign user-settings-section">
+            <!-- Form Border Container -->
             <div class="form_border">
-
+                <!-- Settings Form -->
                 <form class="p-5" action="/user-update" method="POST">
                     <h2 class="mb-5">Settings</h2>
 
-                    <!-- settings fields -->
+                    <!-- Settings Fields -->
                     <div class="row">
 
                         <!-- First Name -->
                         <div class="row mb-3">
                             <label for="firstName" class="col-sm-3 col-form-label"><strong>First Name:</strong></label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="firstName"  name="firstName"    required placeholder="<%= userSettings.firstName %>"    value="<%= userSettings.firstName %>">
+                                <input type="text" class="form-control" id="firstName" name="firstName" required placeholder="<%= userSettings.firstName %>" value="<%= userSettings.firstName %>">
                             </div>
                         </div>
 
@@ -26,7 +28,7 @@
                         <div class="row mb-3">
                             <label for="lastname" class="col-sm-3 col-form-label"><strong>Last Name:</strong></label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="surName"   name="surName"     required placeholder="<%= userSettings.surName %>"     value="<%= userSettings.surName %>">
+                                <input type="text" class="form-control" id="surName" name="surName" required placeholder="<%= userSettings.surName %>" value="<%= userSettings.surName %>">
                             </div>
                         </div>
 
@@ -34,8 +36,7 @@
                         <div class="row mb-3">
                             <label for="phone" class="col-sm-3 col-form-label"><strong>Phone:</strong></label>
                             <div class="col-sm-8">
-                                <input type="tel" class="form-control" id="phone" name="phone" required
-                                    pattern="[0-9]{10}" placeholder="<%= userSettings.phone %>" value="<%= userSettings.phone %>">
+                                <input type="tel" class="form-control" id="phone" name="phone" required pattern="[0-9]{10}" placeholder="<%= userSettings.phone %>" value="<%= userSettings.phone %>">
                             </div>
                         </div>
 
@@ -51,18 +52,16 @@
                         <div class="row mb-3">
                             <label for="email" class="col-sm-3 col-form-label"><strong>Email:</strong></label>
                             <div class="col-sm-8">
-                                <input type="email" class="form-control" id="email" name="email" required
-                                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                                    placeholder="example@example.com" readonly title="Cannot be edited"
-                                    value="<%= userSettings.email %>">
+                                <input type="email" class="form-control" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="example@example.com" readonly title="Cannot be edited" value="<%= userSettings.email %>">
                             </div>
                         </div>
                     </div>
 
                     <!-- Update and Delete Buttons -->
                     <div class="row">
-                            <button type="submit" class="btn btn-primary button">Update Acount</button>
-                            <button type="button" class="btn btn-danger button" data-toggle="modal" data-target="#deleteModal">Delete Account</button>
+                        <button type="submit" class="btn btn-primary button">Update Account</button>
+                        <!-- Delete Account Button - Opens Delete Modal -->
+                        <button type="button" class="btn btn-danger button" data-toggle="modal" data-target="#deleteModal">Delete Account</button>
                     </div>
                 </form>
 
@@ -80,7 +79,9 @@
                                 Are you sure you want to delete your account?
                             </div>
                             <div class="modal-footer">
+                                <!-- Close Modal Button -->
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <!-- Delete Account Form -->
                                 <form action="/user-delete" method="POST">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
@@ -93,3 +94,5 @@
         </section>
     </main>
     <%- include('includes/end.ejs') %>
+</body>
+</html>

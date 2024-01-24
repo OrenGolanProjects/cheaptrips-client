@@ -6,71 +6,79 @@
     <%- include('../includes/navigation.ejs') %>
 
     <main class="container">
+        <!-- Search Trip Section -->
         <section class="sign search-trip-section">
-            <div class="container">
-                <h2 class="mb-4">Search for Trip</h2>
-                    <form action="/search-trip" method="POST">
-                        <div class="row">
-                            <div class="col-md-12 sign">
-                                <div >
-                                    <h3 class="mb-4">Search Trip By</h3>
-                                    <div>
+            <h2 class="mb-4">Search for Trip</h2>
+            <!-- Search Trip Form -->
+            <form action="/search-trip" method="POST">
+                <div class="row mt-4">
+                    <div class="sign">
+                        <!-- Trip Type Selection -->
+                        <div>
+                            <strong>
+                                <h3 class="mb-4">Search Trip By</h3>
+                                <small class="text-danger">Choose one of: months or dates</small><br>
+                                <div>
+                                    <strong>
                                         <input type="radio" id="trip-months" name="tripType" value="months" checked onclick="toggleDateInputs(false)">
                                         <label for="trip-months">Search By Months</label>
-                                
+                            
                                         <input type="radio" id="trip-dates" name="tripType" value="dates" onclick="toggleDateInputs(true)">
                                         <label for="trip-dates">Search By Dates</label>
-                                    </div>
-                                    <small class="text-danger">Choose one of: months or dates</small>
-                                    <br>
+                                    </strong>
                                 </div>
+                            </strong>
+                        </div>
 
-                                <div >
-                                    <label for="radius" class="form-label">Select Distance (10-50 km):</label>
-                                    <input type="range" class="form-range form-control" id="radius" name="radius" min="10" max="50" value="10" oninput="updateDistance(this.value)">
-                                    <span id="selectedDistance">10 km</span>
-                                </div>
+                        <!-- Distance and Places Input -->
+                        <div class="mt-4">
+                            <label for="radius" class="form-label">Select Distance (10-50 km):</label>
+                            <input type="range" class="w-100 form-control" id="radius" name="radius" min="10" max="50" value="10" oninput="updateDistance(this.value)">
+                            <span id="selectedDistance">10 km</span>
+                        </div>
 
-                                <div class="col-sm ">
-                                    <label for="limitPlaces" class="form-label">Select Amount of Places to Retrieve:</label>
-                                    <input type="range" class="form-range form-control" id="limitPlaces" name="limitPlaces" min="1" max="5" value="1" oninput="updatePlacesAmount(this.value)">
-                                    <span id="selectedPlacesAmount">1 places</span>
-                                </div>
+                        <div>
+                            <label for="limitPlaces" class="form-label">Select Amount of Places to Retrieve:</label>
+                            <input type="range" class="w-100 form-control" id="limitPlaces" name="limitPlaces" min="1" max="5" value="1" oninput="updatePlacesAmount(this.value)">
+                            <span id="selectedPlacesAmount">1 places</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <h2>Trip Inputs</h2>
+
+                    <!-- Origin and Destination Input -->
+                    <div id="months">
+                        <div class="w-100">
+                            <div class="mb-3">
+                                <label for="origin" class="form-label"><strong>Origin - City Name</strong> <small class="text-danger">**</small></label>
+                                <input type="text" class="form-control" id="origin" name="origin" required value="tel aviv">
+                            </div>
+            
+                            <div class="mb-3">
+                                <label for="destination" class="form-label"><strong>Destination - City Name</strong> <small class="text-danger">**</small></label>
+                                <input type="text" class="form-control" id="destination" name="destination" required placeholder="destination">
                             </div>
                         </div>
-                        <div class="row">
-                            <h2 class="mb-4">Trip Inputs</h2>
-                            <div class="col-md-6">
-                                <div>
-                                    <div class="mb-3">
-                                        <label for="origin" class="form-label"><strong>Origin - City Name</strong> <small class="text-danger">**</small></label>
-                                        <input type="text" class="form-control" id="origin" name="origin" required value="tel aviv">
-                                    </div>
-                    
-                                    <div class="mb-3">
-                                        <label for="destination" class="form-label"><strong>Destination - City Name</strong> <small class="text-danger">**</small></label>
-                                        <input type="text" class="form-control" id="destination" name="destination" required placeholder="destination">
-                                    </div>
-                                </div>
-                            </div>
+                    </div>
 
-
-                            <div id="dates" class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="departureDate"  class="form-label"><strong>Departure Date</strong></label>
-                                    <input type="date" class="form-control" id="departureDate" name="departureDate">
-                                </div>
-                
-                                <div class="mb-3">
-                                    <label for="returnDate" class="form-label"><strong>Return Date:</strong></label>
-                                    <input type="date" class="form-control" id="returnDate" name="returnDate">
-                                </div>
-                            </div>
+                    <!-- Departure and Return Date Input -->
+                    <div id="dates" class="col-md-6">
+                        <div class="mb-3">
+                            <label for="departureDate"  class="form-label"><strong>Departure Date</strong></label>
+                            <input type="date" class="form-control" id="departureDate" name="departureDate">
                         </div>
-                        
-                        <button type="submit" class="btn btn-primary button">Search</button>
-                    </form>
-            </div>
+        
+                        <div class="mb-3">
+                            <label for="returnDate" class="form-label"><strong>Return Date:</strong></label>
+                            <input type="date" class="form-control" id="returnDate" name="returnDate">
+                        </div>
+                    </div>
+                </div>
+                <!-- Search Button -->
+                <button type="submit" class="btn btn-primary button">Search</button>
+            </form>
         </section>
     </main>
 

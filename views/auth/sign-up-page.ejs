@@ -5,13 +5,14 @@
 
     <main class="container">
         
+        <!-- Sign-up Section -->
         <section class="sign sign-up-section">
             <div class="form_border">
+                <!-- Sign-up Form -->
                 <form class="p-5" action="/sign-up" method="POST">
                     <h2 class="mb-5">Sign-up</h2>
 
-
-                    <!-- First Name -->
+                    <!-- First Name Input -->
                     <div class="row mb-3">
                         <label for="firstName" class="col-sm-3 col-form-label"><strong>First Name:</strong></label>
                         <div class="col-sm-8">
@@ -19,7 +20,7 @@
                         </div>
                     </div>
 
-                    <!-- Last Name -->
+                    <!-- Last Name Input -->
                     <div class="row mb-3">
                         <label for="surname" class="col-sm-3 col-form-label"><strong>Last Name:</strong></label>
                         <div class="col-sm-8">
@@ -27,7 +28,7 @@
                         </div>
                     </div>
 
-                    <!-- Phone -->
+                    <!-- Phone Input -->
                     <div class="row mb-3">
                         <label for="phone" class="col-sm-3 col-form-label"><strong>Phone:</strong></label>
                         <div class="col-sm-8">
@@ -35,7 +36,7 @@
                         </div>
                     </div>
 
-                    <!-- Username -->
+                    <!-- Username Input -->
                     <div class="row mb-3">
                         <label for="username" class="col-sm-3 col-form-label"><strong>Username:</strong></label>
                         <div class="col-sm-8">
@@ -43,7 +44,7 @@
                         </div>
                     </div>
 
-                    <!-- Email -->
+                    <!-- Email Input -->
                     <div class="row mb-3">
                         <label for="email" class="col-sm-3 col-form-label"><strong>Email:</strong></label>
                         <div class="col-sm-8">
@@ -51,7 +52,7 @@
                         </div>
                     </div>
 
-                    <!-- Password -->
+                    <!-- Password Input -->
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label"><strong>Password:</strong></label>
                         <div class="col-sm-8">
@@ -59,7 +60,7 @@
                         </div>
                     </div>
 
-                    <!-- Confirm Password -->
+                    <!-- Confirm Password Input -->
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label"><strong>Confirm Password:</strong></label>
                         <div class="col-sm-8">
@@ -67,13 +68,16 @@
                         </div>
                     </div>
 
+                    <!-- Display error messages here if needed -->
+
                     <!-- Sign-up Button -->
                     <button type="submit" class="button colored-section col-md-4 btn btn-customized mt-4">Sign-up</button>
                 </form>
+                <!-- End Sign-up Form -->
 
             </div>
         </section>
+        <!-- End Sign-up Section -->
     </main>
-
 
     <%- include('../includes/end.ejs') %>
