@@ -6,7 +6,7 @@
 const express = require('express');             // Importing the 'express' library to create a web server
 const bodyParser = require('body-parser');      // Importing the 'body-parser' middleware to handle HTTP request bodies
 const path = require('path');
-const session = require('express-session');
+
 
 // ============ CONTROLLER ===============
 const errorController = require('./controllers/errors');
