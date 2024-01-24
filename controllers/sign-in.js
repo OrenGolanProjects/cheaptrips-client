@@ -19,6 +19,7 @@ exports.getSignInPage = (req, res, next) => {
 
         if(!(cookies.isAuthenticated === 'false')){
             cookies.isAuthenticated = 'false';
+
         }
 
         console.log('sign-in >> getSignInPage:: end.');
@@ -27,7 +28,8 @@ exports.getSignInPage = (req, res, next) => {
             pageTitle: 'Sign-in',
             isAuthenticated: cookies.isAuthenticated
         });
-    }
+};
+
 
 // Handles a POST request after submitting email and password for sign-in.
 exports.postSignInPage = async (req, res, next) => {
@@ -35,20 +37,19 @@ exports.postSignInPage = async (req, res, next) => {
     const maxAgeInSeconds = 5 * 60 * 60; // 5 hours in seconds
     try {
         console.log('ign-in >> postsSignInPage:: start');
+        console.log(`sign-in >> postSignInPage:: body: ${{"email": req.body.email, "password": req.body.password}}`);
 
-
-        // Converts the user's input into a JSON string.
         const raw = JSON.stringify({"email": req.body.email, "password": req.body.password});
-        console.log(`sign-in >> postSignInPage:: body: ${raw}`);
-
 
         try {
             // Uses the post method from GeneralAPIHandler to make an API request for authentication.
-            const result = await apiHandler.post("authenticate", JSON.parse(raw));
-            cookieHelper.setCookieWithExpire(res, 'email', decodeURIComponent(req.body.email), maxAgeInSeconds);
+            const result = await apiHandler.post("authenticate", JSON.parse(raw) );
+            // cookieHelper.setCookieWithExpire(res, 'email', decodeURIComponent(req.body.email), maxAgeInSeconds);
             cookieHelper.setCookieWithExpire(res, 'token', result.token, maxAgeInSeconds);
 
-            apiHandler.appendAuthorizationHeader(result.token);
+            if (!(apiHandler.headers.has('Authorization'))){
+                apiHandler.appendAuthorizationHeader(result.token);
+            }
             await apiHandler.get(`app/userinfo/get-specific-user-info?userIdentifier=${decodeURIComponent(req.body.email)}`);
         }catch (error){
             console.log(error)
@@ -60,10 +61,6 @@ exports.postSignInPage = async (req, res, next) => {
             });
         }
 
-        // Sets cookies with authentication information for the user.
-        
-        
-        
         cookieHelper.setCookieWithExpire(res, 'isAuthenticated', 'true', maxAgeInSeconds);
         console.log('sign-in >> postSignInPage:: end');
         // Sends a response to the client by rendering the search-trip page for authenticated users.

@@ -22,7 +22,10 @@ exports.getUserDisplay = async (req, res, next) => {
             console.log('user-settings >> getUserDisplay :: execute get specic user.');
             console.log(cookies.token);
             console.log(cookies.email);
-            apiHandler.appendAuthorizationHeader(cookies.token);
+            if (!(apiHandler.headers.has('Authorization'))){
+                apiHandler.appendAuthorizationHeader(cookies.token);
+            }
+            
             const result = await apiHandler.get(`app/userinfo/get-specific-user-info?userIdentifier=${cookies.email}`);
 
             console.log(result)
@@ -85,7 +88,7 @@ exports.putUpdateUser = async(req,res,next)=>{
         // Uses the post method from GeneralAPIHandler to make an API request for authentication.
         const result = await apiHandler.put("app/userinfo/update-specific-user-info", JSON.parse(userData));
         console.log(`sign-up >> putUpdateUser:: Sign-up successfully done.`);
-        
+
 
         cookieHelper.setCookieWithExpire(res,'userData',JSON.stringify(result),3600)
         
@@ -101,7 +104,7 @@ exports.putUpdateUser = async(req,res,next)=>{
             isAuthenticated: false
         });
     }
-}
+};
 
 exports.deleteUser = async(req,res,next)=>{
     try{
@@ -112,7 +115,9 @@ exports.deleteUser = async(req,res,next)=>{
         return res.redirect('/');
     }
 
-    apiHandler.appendAuthorizationHeader(cookies.token);
+    if (!(apiHandler.headers.has('Authorization'))){
+        apiHandler.appendAuthorizationHeader(cookies.token);
+    }
     const result = await apiHandler.delete(`app/userinfo/delete-specific-user-info`);
     console.log('user-settings >> deleteUser :: end.');
     

@@ -20,6 +20,7 @@ exports.setCookieWithExpire = (res, name, value, expireTimeSeconds) => {
 
     // Set the updated cookies in the response header
     res.setHeader('Set-Cookie', updatedCookies);
+    console.log('setHeader Done to:',name,' with value:',value);
 };
 
 exports.clearCookies = function (req, res) {

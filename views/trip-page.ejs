@@ -1,8 +1,8 @@
-<%- include('../includes/head.ejs') %>
+<%- include('includes/head.ejs') %>
 </head>
 
 <body>
-    <%- include('../includes/navigation.ejs') %>
+    <%- include('includes/navigation.ejs') %>
 
     <main class="container trip-page-width">
 
@@ -150,19 +150,19 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="travel-info">
-                                <p><strong>Asked to search for: <%= travelPlacesData.limitPlaces %> Places.</strong></p>
-                                <p><strong>City:</strong> <%= travelPlacesData.countryIATAcode %>-<%= travelPlacesData.city %></p>
-                                <p><strong>Country IATA Code:</strong> </p>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            
-                            <div class="travel-info">
                                 <p><strong>Radius:</strong> <%= travelPlacesData.radius %></p>
                                 <p><strong>Longitude:</strong> <%= travelPlacesData.lon %></p>
                                 <p><strong>Latitude:</strong> <%= travelPlacesData.lat %></p>
                             </div>
                         </div>
+                        <div class="col-sm-6">
+                            <div class="travel-info">
+                                <p><strong>Asked to search for: <%= travelPlacesData.limitPlaces %> Places.</strong></p>
+                                <p><strong>City:</strong> <%= travelPlacesData.countryIATAcode %>-<%= travelPlacesData.city %></p>
+                                <p><strong>Country IATA Code:</strong> </p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
         
@@ -213,7 +213,7 @@
                                     <!-- Places Carousel -->
                                     <div id="travelCarousel<%= index %>Carousel" class="carousel slide carousel-fade" >
                                         <div class="carousel-indicators">
-                                            <% for (let i = 0; i < newsData.newsList.length; i++) { %>
+                                            <% for (let i = 0; i < category.places.length; i++) { %>
                                                 <button type="button" data-bs-target="#travelCarousel" data-bs-slide-to="<%= i %>" aria-current="true" class="<%= i === 0 ? 'active' : '' %>"></button>
                                             <% } %>
                                         </div>
@@ -269,4 +269,4 @@
 
     </main>
 
-    <%- include('../includes/end.ejs') %>
+    <%- include('includes/end.ejs') %>

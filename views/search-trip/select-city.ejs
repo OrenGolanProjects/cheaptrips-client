@@ -1,0 +1,74 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main class="container">
+        <section class="sign search-trip-section">
+            <div class="container">
+                <h2 class="mb-4">Search for Trip</h2>
+                <form action="/search-trip-select-city" method="POST">
+                    <div class="row">
+                        <!-- Modal -->
+                        <div class="modal fade show" id="cityModel" tabindex="-1" aria-labelledby="cityModelLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="cityModelLabel">CITY INFO</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-6 sign">
+                                                    <div id="selectedDestinationCityInfo1">
+                                                        <h4>ORIGIN INFO</h4>
+                                                        <% const jsonArray = JSON.parse(originCity) %>
+                                                        <h5 class="modal-title" id="cityModelLabel">Found <%= jsonArray.length %> origin cities.</h5>
+                                                        <div class="mb-3">
+                                                            <label for="originSelect" class="form-label"><strong>Select Origin City by IATA Code</strong></label>
+                                                            <select class="form-select" id="originSelect" name="originSelect">
+                                                                <% const originCitiesArray = JSON.parse(originCity) %>
+                                                                <% originCitiesArray.forEach((city) => { %>
+                                                                    <option value="<%= city.cityIATACode %>"><%= city.cityName %> - <%= city.cityIATACode %></option>
+                                                                <% }); %>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-6 sign">
+                                                    <div id="selectedDestinationCityInfo2">
+                                                        <h4>DESTINATION INFO</h4>
+                                                        <% const jsonArray2 = JSON.parse(destinationCity) %>
+                                                        <h5 class="modal-title" id="cityModelLabel">Found <%= jsonArray2.length %> destination cities.</h5>
+                                                        <div class="mb-3">
+                                                            <label for="destinationSelect" class="form-label"><strong>Select Destination City by IATA Code</strong></label>
+                                                            <select class="form-select" id="destinationSelect" name="destinationSelect">
+                                                                <% const destinationCitiesArray = JSON.parse(destinationCity) %>
+                                                                <% destinationCitiesArray.forEach((city) => { %>
+                                                                    <option value="<%= city.cityIATACode %>"><%= city.cityName %> - <%= city.cityIATACode %></option>
+                                                                <% }); %>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <!-- Update the button to call the submitForm function -->
+                                        <input type="hidden" name="userData" value="<%= userData %>">
+                                        <input type="hidden" name="returnDate" value="<%= returnDate %>">
+                                        <input type="hidden" name="departureDate" value="<%= departureDate %>">
+                                        <button type="submit" class="btn btn-primary button">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../includes/end.ejs') %>

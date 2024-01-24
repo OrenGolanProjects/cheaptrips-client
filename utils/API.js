@@ -5,29 +5,40 @@ exports.GeneralAPIHandler = class GeneralAPIHandler {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
         });
-    }
+    };
 
     appendAuthorizationHeader(accessToken) {
         this.headers.append('Authorization', `Bearer ${accessToken}`);
-    }
+    };
     
     
     async makeRequest(url, options) {
         try {
+            console.log('API >> makerequest :: ',url);
             const response = await fetch(url, options);
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                console.log(options)
+                if (!response.ok) {
+                const errMessage = await response.text();
+                console.error(errMessage);
+                throw new Error(`${response.status}.\n ${errMessage}`);
             }
-            return response.json();
+    
+            // Check if response body is empty
+            const text = await response.text();
+            if (!text) {
+                return null; // or handle it in a way that makes sense for your application
+            }
+
+            return JSON.parse(text);
         } catch (error) {
             console.error('Request failed:', error.message);
             throw error;
         }
-    }
-
+    };
+    
     createUrl(endpoint) {
         return `${this.baseURL}/${endpoint}`;
-    }
+    };
 
     get(endpoint) {
         const url = this.createUrl(endpoint);
@@ -36,18 +47,20 @@ exports.GeneralAPIHandler = class GeneralAPIHandler {
             headers: this.headers
         };
         return this.makeRequest(url, options);
-    }
+    };
 
     post(endpoint, data) {
         const url = this.createUrl(endpoint);
+        
         const options = {
             method: 'POST',
             headers: this.headers,
-            body: JSON.stringify(data), // Fix: Stringify the data
+            body: JSON.stringify(data),
         };
+
         return this.makeRequest(url, options);
-    }
-    
+    };
+
 
     put(endpoint, data) {
         const url = this.createUrl(endpoint);
@@ -57,7 +70,7 @@ exports.GeneralAPIHandler = class GeneralAPIHandler {
             body: JSON.stringify(data)
         };
         return this.makeRequest(url, options);
-    }
+    };
 
     delete(endpoint) {
         const url = this.createUrl(endpoint);
@@ -67,5 +80,5 @@ exports.GeneralAPIHandler = class GeneralAPIHandler {
             redirect: 'follow',
         };
         return this.makeRequest(url, options);
-    }
-}
+    };
+};

@@ -9,5 +9,74 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="..." crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="..." crossorigin="anonymous"></script>
 
+<!-- -------------------- -->
+<!-- search-trip.ejs file -->
+<!-- -------------------- -->
+
+<!-- function that manage the range of the selection -->
+<script>
+    function updateDistance(value) {
+        document.getElementById('selectedDistance').textContent = value + ' km';
+    }
+
+    function updatePlacesAmount(value) {
+        document.getElementById('selectedPlacesAmount').textContent = value + (value === '1' ? ' place' : ' places');
+    }
+</script>
+
+<!-- function that format the date into yyyy-MM-dd -->
+<script>
+    function formatDate(input) {
+        // Get the selected date from the input field
+        const selectedDate = input.value;
+
+        // Create a Date object using the selected date
+        const dateObject = new Date(selectedDate);
+
+        // Get the year, month, and day
+        const year = dateObject.getFullYear();
+        const month = (dateObject.getMonth() + 1).toString().padStart(2, '0'); // Adding 1 to the month since it is zero-based
+        const day = dateObject.getDate().toString().padStart(2, '0');
+
+        // Format the date as yyyy-MM-dd
+        const formattedDate = `${year}-${month}-${day}`;
+
+        // Set the input value to the formatted date
+        input.value = formattedDate;
+    }
+</script>
+
+<!-- Display the dates in the search trip page -->
+<script>
+    function toggleDateInputs() {
+        const departureDateInput = document.getElementById('dates');
+        const tripMonthsRadio = document.getElementById('trip-months');
+
+        // If "Search By Months" is selected, hide date inputs; otherwise, show them
+        if (tripMonthsRadio.checked) {
+            dates.style.display = 'none';
+
+        } else {
+            dates.style.display = 'block';
+
+        }
+    }
+
+    // Call the function on page load to initialize the state
+    toggleDateInputs();
+</script>
+
+<!-- -------------------- -->
+<!-- select-city.ejs file -->
+<!-- -------------------- -->
+
+<!-- function that show the modal -->
+<script>
+    $(document).ready(function () {
+        $('#cityModel').modal('show');
+    });
+</script>
+
+
 </body>
 </html>
