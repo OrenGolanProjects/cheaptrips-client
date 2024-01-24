@@ -4,86 +4,83 @@
 <body>
     <%- include('includes/navigation.ejs') %>
 
-    <!-- Main content container -->
     <main class="container trip-page-width">
+        <h1>TRIP RESULTS</h1>
 
         <!-- Flight Section -->
-        <section class="section flight-section">
-            <!-- Container for flight details -->
-            <div class="container">
+        <section class="section flight-section " >
+            <div class="container"> 
                 <div class="section-header">
                     <h2>Flight Details</h2>
-                </div>
-
-                <!-- Tickets Section -->
-                <div class="section-header text-center">
-                    <h2>Tickets</h2>
-                    <!-- Origin and Destination Information -->
                     <div>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h3>Origin</h3>
-                                    <p>Origin: <%= flightData.origin.city.cityName %>, <%= flightData.origin.country.countryName %></p>
+                                    <h4>Origin</h4>
+                                    <h5><%= flightData.origin.city.cityName %>, <%= flightData.origin.country.countryName %></h5>
                                 </div>
                                 <div class="col-md-6">
-                                    <h3>Destination</h3>
-                                    <p>Destination: <%= flightData.destination.city.cityName %>, <%= flightData.destination.country.countryName %></p>
+                                    <h4>Destination</h4>
+                                    <h5><%= flightData.destination.city.cityName %>, <%= flightData.destination.country.countryName %></h5>
                                 </div>
                             </div>
                         </div>
-
-                        <h3>Currency: <%= flightData.currency %></h3>
-                    </div>
+                        
+                    <h3 >Currency: <%= flightData.currency %></h3>
+                </div>
+                </div>
+                
+                <div class="section-header text-center">
+                    <h2>Tickets</h2>
                 </div>
             </div>
 
-            <!-- Ticket Carousel -->
-            <div id="ticketCarousel" class="carousel slide carousel-fade">
-                <!-- Carousel Inner -->
-                <div class="carousel-inner">
-                    <!-- Loop through ticket keys and create carousel items -->
+            
+            <div id="ticketCarousel" class="carousel slide carousel-fade ">
+                
+                <div class="carousel-inner ">
                     <% for (let i = 0; i < flightData.ticketKeys.length; i++) { %>
-                        <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-                            <!-- Loop through tickets within each key and display details -->
-                            <% for (let j = i * 1; j < (i + 1) * 1 && j < flightData.ticketKeys.length; j++) { %>
-                                <div class="ticket-details">
-                                    <!-- Ticket details go here -->
+                        <div class="carousel-item  <%= i === 0 ? 'active' : '' %>" >
+                                    <% for (let j = i * 1; j < (i + 1) * 1 && j < flightData.ticketKeys.length; j++) { %>
+                                        <div class="ticket-details ">
+                                            <h1><%= flightData.ticketKeys[j].airlineDetails.name %> - <%= flightData.ticketKeys[j].flightNumber %></h1>
+                                            <h3>Price: <%= flightData.ticketKeys[j].price %> <%= flightData.currency %></h6>
+                                            <h6>Transfers: <%= flightData.ticketKeys[j].transfers %></h6>
+                                            <h6>Departure Time: <%= flightData.ticketKeys[j].departureAt %></h6>
+                                            <h6>Return Time: <%= flightData.ticketKeys[j].returnAt %></h6>
+                                            <h6>Expires At: <%= flightData.ticketKeys[j].expiresAt %></h6>
+                                            <h6>Ticket Index: <%= flightData.ticketKeys[j].ticketIndex %></h6>
+                                            <!-- Airline Details -->
+                                            <h6>Airline Code: <%= flightData.ticketKeys[j].airlineDetails.airlineIATACode %></h6>
+                                            <h6>Airline Low Cost: <%= flightData.ticketKeys[j].airlineDetails.lowCost %></h6>
+                                        </div>
+                                    <% } %>
                                 </div>
-                            <% } %>
-                        </div>
                     <% } %>
                 </div>
-
-                <!-- Carousel Indicators -->
                 <div class="carousel-indicators indicators-position">
-                    <!-- Loop through ticket keys and create carousel indicators -->
                     <% for (let i = 0; i < (flightData.ticketKeys.length); i++) { %>
                         <button type="button" data-bs-target="#ticketCarousel" data-bs-slide-to="<%= i %>" aria-current="true" class="<%= i === 0 ? 'active' : '' %>"></button>
                     <% } %>
                 </div>
 
-                <!-- Carousel Controls -->
-                <a href="#ticketCarousel" class="carousel-control-prev" role="button" data-slide="prev">
-                    <span class="sr-only">Previous</span>
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
+                <a href="#ticketCarousel" class="carousel-control-prev " role="button" data-slide="prev">
+                    <span class="sr-only ">Previous</span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span></a>
                 <a href="#ticketCarousel" class="carousel-control-next" role="button" data-slide="next">
                     <span class="sr-only">Next</span>
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span></a>
             </div>
-            <!-- Ticket Carousel -->
+            
+
+            </div>
         </section>
 
         <!-- News Section -->
-        <section class="section news-section">
-            <!-- Container for news details -->
+        <section class="section news-section  ">
             <div class="container section-header">
                 <h2 class="">News</h2>
-                <!-- Display local news information -->
                 <h2>Local News: <%= flightData.destination.country.countryName %></h2>
-                <!-- Display city and news list count -->
                 <div class="row">
                     <div class="col-sm">
                         <h4>City: <%= newsData.cityName %></h4>
@@ -91,42 +88,51 @@
                     <div class="col-sm">
                         <h4>News List Count: <%= newsData.newsListCount %></h4>
                     </div>
+
                 </div>
             </div>
 
             <!-- News Carousel -->
             <div id="newsCarousel" class="carousel slide carousel-fade">
-                <!-- Carousel Indicators -->
-                <div class="carousel-indicators">
-                    <!-- Loop through news list and create carousel indicators -->
+                <div class="carousel-indicators ">
                     <% for (let i = 0; i < newsData.newsList.length; i++) { %>
                         <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="<%= i %>" aria-current="true" class="<%= i === 0 ? 'active' : '' %>"></button>
                     <% } %>
                 </div>
-
-                <!-- Carousel Inner -->
-                <div class="carousel-inner">
-                    <!-- Loop through news list and create carousel items -->
+                <div class="carousel-inner ">
                     <% for (let i = 0; i < newsData.newsList.length; i++) { %>
                         <div class="carousel-item <%= i === 0 ? 'active' : '' %>" data-interval="8000">
-                            <!-- Display news details -->
+                            
                             <div class="container">
-                                <div class="card-img-top">
-                                    <!-- Display news image -->
-                                </div>
-                                <div class="card center-card">
-                                    <!-- Display news details -->
-                                </div>
+                                    <div class="card-img-top">
+                                        <img src="<%= newsData.newsList[i].urlToImage %>" class=" card-img-overlay" alt="<%= newsData.newsList[i].title %>">
+                                    </div>
+                                    <div class="card center-card">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-dark"><%= newsData.newsList[i].title %></h5>
+                                            <p class="card-text text-dark"><%= newsData.newsList[i].description %></p>
+                                            <p class="card-text small text-muted">Published At: <%= new Date(newsData.newsList[i].publishedAt).toLocaleString() %></p>
+
+                                        </div>
+
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Source:</strong> <%= newsData.newsList[i].source_name %></li>
+                                            <li class="list-group-item"><strong>Author:</strong> <%= newsData.newsList[i].author %></li>
+                                        </ul>
+                                        <div class="button-move-bot">
+                                            <a class="btn btn-primary button" href="<%= newsData.newsList[i].url %>" >Click for Article</a>
+                                        </div>
+                                    </div>
                             </div>
+                            
                         </div>
                     <% } %>
                 </div>
-
-                <!-- Carousel Controls -->
                 <a href="#newsCarousel" class="carousel-control-prev" role="button" data-slide="prev">
                     <span class="sr-only">Previous</span>
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
+        
                 <a href="#newsCarousel" class="carousel-control-next" role="button" data-slide="next">
                     <span class="sr-only">Next</span>
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -136,62 +142,108 @@
         </section>
 
         <!-- Travel Places Section -->
-        <section class="section places-section">
-            <!-- Container for travel places details -->
+        <section class="section places-section ">
+
             <div class="container">
                 <div class="section-header text-center">
-                    <h2>Places</h2>
-                    <!-- Display travel information in row and columns -->
+                    <h2 >Places</h2>
+                    <!-- Travel Information in Row and Columns -->
                     <div class="row">
+                        
                         <div class="col-sm-6">
                             <div class="travel-info">
-                                <!-- Display travel information details -->
+                                <h4>Radius: <%= travelPlacesData.radius %></p>
+                                <h4>Longitude: <%= travelPlacesData.lon %></p>
+                                <h4>Latitude: <%= travelPlacesData.lat %></p>
                             </div>
                         </div>
+                        
                         <div class="col-sm-6">
                             <div class="travel-info">
-                                <!-- Display travel information details -->
+                                <h4>Asked to search for: <%= travelPlacesData.limitPlaces %> Places.</h4>
+                                <h4>City: <%= travelPlacesData.countryIATAcode %>-<%= travelPlacesData.city %></h4>
                             </div>
                         </div>
+                    
+                        
                     </div>
                 </div>
-
+        
                 <!-- Categories Containers -->
                 <div class="container">
                     <div class="row">
-                        <!-- Loop through travel places categories and create category containers -->
                         <% travelPlacesData.kindsCategory.categories.forEach((category, index) => { %>
                             <div class="col-md-6">
                                 <div class="category-container" id="category<%= index %> Container">
+
+                                    <!-- Choose the right image based on category name -->
+                                    <% let categoryImageUrl = '';
+                                    let categoryHeader = '';
+                                        switch (category.name) {
+                                            case 'accomodations':
+                                                categoryHeader = 'Accomodations'
+                                                categoryImageUrl = 'https://www.betterwander.com/wp-content/uploads/2019/09/photo-1520250497591-112f2f40a3f4.jpg.webp';
+                                                break;
+                                            case 'interesting_places':
+                                                categoryHeader = 'Interesting Places'
+                                                categoryImageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMi-aDmnF9HsE-vZ_xfcwVWwB2Ne2wOYGz6w&usqp=CAU';
+                                                break;
+                                            case 'adult':
+                                                categoryHeader = 'Adult'
+                                                categoryImageUrl = 'https://media.istockphoto.com/id/1350885528/vector/under-18-sign-warning-symbol-over-18-only-censored-eighteen-age-older-forbidden-adult.jpg?s=612x612&w=0&k=20&c=ast2XCxr0wfHm1XBDWL-u2sfsnfkZvUoPjE_h5-YsPE=';
+                                                break;
+                                            case 'amusements':
+                                                categoryHeader = 'Amusements'
+                                                categoryImageUrl = 'https://www.travelers.co.il/wp-content/uploads/2022/08/145-6.jpg';
+                                                break;
+                                            case 'sport':
+                                                categoryHeader = 'Sport'
+                                                categoryImageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQokjkYjlY47u3EXXVml8R6L5SFf_Es1foUOw&usqp=CAU';
+                                                break;
+                                            case 'tourist_facilities':
+                                                categoryHeader = 'Tourist Facilities'
+                                                categoryImageUrl = 'https://i0.wp.com/www.arabtimesonline.com/news/wp-content/uploads/2020/03/travel-and-tourism.jpg';
+                                                break;
+                                            // Add more cases as needed
+                                            default:
+                                                categoryHeader = ''
+                                                categoryImageUrl = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEIEmftiPC_0yLR0Qbb4ChSZycCnAHFJLuPSjvvifkQZh4NoyEr5RftVmayIrpwePW-s4&usqp=CAU';
+                                        }
+                                    %>
                                     <h1><%= categoryHeader %></h1>
                                     <img class="category-image" src="<%= categoryImageUrl %>" alt="<%= category.name %>">
-
+                    
                                     <!-- Places Carousel -->
-                                    <div id="travelCarousel<%= index %>Carousel" class="carousel slide carousel-fade">
-                                        <!-- Carousel Indicators -->
+                                    <div id="travelCarousel<%= index %>Carousel" class="carousel slide carousel-fade" >
                                         <div class="carousel-indicators">
-                                            <!-- Loop through places in each category and create carousel indicators -->
                                             <% for (let i = 0; i < category.places.length; i++) { %>
                                                 <button type="button" data-bs-target="#travelCarousel" data-bs-slide-to="<%= i %>" aria-current="true" class="<%= i === 0 ? 'active' : '' %>"></button>
                                             <% } %>
                                         </div>
 
-                                        <!-- Carousel Inner -->
-                                        <div class="carousel-inner">
-                                            <!-- Loop through places in each category and create carousel items -->
+                                        <div class="carousel-inner ">
                                             <% category.places.forEach((place, placeIndex) => { %>
                                                 <div class="carousel-item <%= placeIndex === 0 ? 'active' : '' %>" data-interval="8000">
-                                                    <!-- Display place details -->
                                                     <div class="card card-size-outer">
-                                                        <div class="card-body card-size-inner">
+                                                        <div class="card-body card-size-inner ">
                                                             <div class="container">
                                                                 <div class="row">
                                                                     <div class="">
-                                                                        <!-- Display place information -->
+                                                                        <h5 class="card-title"><%= place.name %></h5>
+                                                                        <p class="card-text"><strong>Categories</strong><br><%= place.kinds %></p>
+                                                                        <p class="card-text"><strong>Address:</strong></p>
+                                                                        <p class="card-text">  <%= place.address.road %></p>
+                                                                        <p><%= place.address.suburb %>, <%= place.address.state %></p>
+                                                                        <p><%= place.address.country %>, <%= place.address.postcode %></p>
                                                                     </div>
                                                                     <div class="carousel-container">
-                                                                        <!-- Display buttons and links for each place -->
+                                                                            <a href="<%= place.otm %>" target="_blank" class="btn btn-primary button">Click for Map</a>
+                                                                            <!-- Check if place.url is a URL endpoint -->
+                                                                            <% if (place.url && place.url.startsWith("http")) { %>
+                                                                                <a href="<%= place.url %>" target="_blank" class="btn btn-primary button">Click for Info</a>
+                                                                            <% } %>
                                                                     </div>
+                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -199,8 +251,6 @@
                                                 </div>
                                             <% }) %>
                                         </div>
-
-                                        <!-- Carousel Controls -->
                                         <a class="carousel-control-prev" href="#travelCarousel<%= index %>Carousel" role="button" data-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                             <span class="sr-only">Previous</span>
@@ -223,5 +273,3 @@
     </main>
 
     <%- include('includes/end.ejs') %>
-</body>
-</html>

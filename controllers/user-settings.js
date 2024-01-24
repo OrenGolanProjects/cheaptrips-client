@@ -31,7 +31,7 @@ exports.getUserDisplay = async (req, res, next) => {
             console.log(cookies.token);
 
             apiHandler.appendAuthorizationHeader(cookies.token);
-            const result = await apiHandler.get(`app/userinfo/get-specific-user-info?userIdentifier=${cookies.email}`);
+            const result = await apiHandler.get(`app/userinfo/get-specific-user-info`);
 
             console.log(result);
 
