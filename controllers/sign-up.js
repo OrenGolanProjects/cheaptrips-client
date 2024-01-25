@@ -47,8 +47,6 @@ exports.postSignUpPage = async (req, res, next) => {
 
     // Check if the password and confirm_password match.
     if (req.body.password === req.body.confirm_password) {
-        console.log("postSignUpPage BODDDYYY")
-        console.log(req.body);
 
         // Converts the user's input into a JSON string.
         const raw = JSON.stringify(
@@ -60,7 +58,7 @@ exports.postSignUpPage = async (req, res, next) => {
                 "userInfoRequest": {
                     "userName": req.body.userName,
                     "firstName": req.body.firstName,
-                    "surName": req.body.surname,
+                    "surName": req.body.surName,
                     "phone": req.body.phone
                 }
             }

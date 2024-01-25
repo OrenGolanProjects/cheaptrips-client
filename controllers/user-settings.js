@@ -22,29 +22,22 @@ exports.getUserDisplay = async (req, res, next) => {
             return res.redirect('/');
         }
 
-        if ('userData' in cookies) {
-            console.log('user-settings >> getUserDisplay :: userData in cookies.');
-            // Parse JSON data from the cookie
-            userData = JSON.parse(cookies.userData);
-        } else {
-            console.log('user-settings >> getUserDisplay :: execute get specific user.');
-            console.log(cookies.token);
+        console.log('user-settings >> getUserDisplay :: execute get specific user.');
+        console.log(cookies.token);
 
-            apiHandler.appendAuthorizationHeader(cookies.token);
-            const result = await apiHandler.get(`app/userinfo/get-specific-user-info`);
+        apiHandler.appendAuthorizationHeader(cookies.token);
+        const result = await apiHandler.get(`app/userinfo/get-specific-user-info`);
 
-            console.log(result);
+        console.log(result);
 
-            userData = {
-                "userName": result.userName,
-                "firstName": result.firstName,
-                "surName": result.surName,
-                "email": result.email,
-                "phone": result.phone
-            };
+        userData = {
+            "userName": result.userName,
+            "firstName": result.firstName,
+            "surName": result.surName,
+            "email": result.email,
+            "phone": result.phone
+        };
 
-            cookieHelper.setCookieWithExpire(res, 'userData', JSON.stringify(userData), 3600);
-        }
 
         console.log('user-settings >> getUserDisplay :: end.');
         return res.render('user-settings', {
@@ -77,17 +70,17 @@ exports.putUpdateUser = async (req, res, next) => {
             return res.redirect('/');
         }
 
-        userData = JSON.stringify({
+        userData = ({
             "userName": req.body.userName,
             "firstName": req.body.firstName,
-            "surName": req.body.surname,
+            "surName": req.body.surName,
             "phone": req.body.phone
         });
 
         console.log(`user-settings >> putUpdateUser:: body: ${userData}`);
 
         // Uses the put method from GeneralAPIHandler to make an API request to update user information.
-        const result = await apiHandler.put("app/userinfo/update-specific-user-info", JSON.parse(userData));
+        const result = await apiHandler.put("app/userinfo/update-specific-user-info", userData);
         console.log(`user-settings >> putUpdateUser:: Update successfully done.`);
 
         // Update the userData cookie with the new information.
@@ -119,9 +112,7 @@ exports.deleteUser = async (req, res, next) => {
         }
 
         // Append Authorization header for the API request.
-        if (!(apiHandler.headers.has('Authorization'))) {
-            apiHandler.appendAuthorizationHeader(cookies.token);
-        }
+        apiHandler.appendAuthorizationHeader(cookies.token);
 
         // Use the delete method from GeneralAPIHandler to make an API request to delete user information.
         const result = await apiHandler.delete(`app/userinfo/delete-specific-user-info`);
