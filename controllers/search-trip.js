@@ -93,7 +93,10 @@ exports.postSearchTrip = async (req, res, next) => {
                 isAuthenticated: cookies.isAuthenticated,
                 originCity: JSON.stringify(responseOrigin),
                 destinationCity: JSON.stringify(responseDestination),
-                userData: JSON.stringify(userData)
+                userData: JSON.stringify(userData),
+                departureDate : req.body.departureDate,
+                returnDate : req.body.returnDate
+
             });
         }
 
@@ -158,16 +161,25 @@ exports.postSelectCity = async (req, res, next) => {
         console.log(userData);
         console.log('before execute the search trip api');
 
-        if ((req.body.departureDate !== '' && req.body.departureDate !== null && req.body.departureDate !== undefined) &&
-            (req.body.returnDate !== '' && req.body.returnDate !== null && req.body.returnDate !== undefined)
-        ) {
-            console.log('start execute generate-trip-by-dates');
-            tripResponse = await apiHandler.post(`cheap-trip/generate-trip-by-dates?depart_date=${req.body.departureDate}&return_date=${req.body.returnDate}`, userData);
-            console.log('generate-trip-by-dates done successfully.');
-        } else {
-            console.log('start execute generate-monthly-trip');
-            tripResponse = await apiHandler.post(`cheap-trip/generate-monthly-trip`, userData);
-            console.log('generate-monthly-trip done successfully.');
+        try{
+                if ((req.body.departureDate !== '' && req.body.departureDate !== null && req.body.departureDate !== undefined) &&
+                (req.body.returnDate !== '' && req.body.returnDate !== null && req.body.returnDate !== undefined)
+            ) {
+                console.log('start execute generate-trip-by-dates');
+                tripResponse = await apiHandler.post(`cheap-trip/generate-trip-by-dates?depart_date=${req.body.departureDate}&return_date=${req.body.returnDate}`, userData);
+                console.log('generate-trip-by-dates done successfully.');
+            } else {
+                console.log('start execute generate-monthly-trip');
+                tripResponse = await apiHandler.post(`cheap-trip/generate-monthly-trip`, userData);
+                console.log('generate-monthly-trip done successfully.');
+            }
+        }catch{
+            res.render('error-page', {
+                pageTitle: 'Error',
+                error_header: 'Search City Error!',
+                error_description: `Did not found trip for ${req.body.destinationSelect} - ${userData.destination_cityName}, please try again.`,
+                isAuthenticated: cookies.isAuthenticated
+            });
         }
 
         console.log('search-trip >> postSearchCity :: end.');
@@ -179,12 +191,11 @@ exports.postSelectCity = async (req, res, next) => {
             travelPlacesData: tripResponse.placesData
         });
     } catch (error) {
-        console.error(error);
         const cookies = cookieHelper.extractCookies(req);
         res.render('error-page', {
             pageTitle: 'Error',
             error_header: 'Search City Error!',
-            error_description: error,
+            error_description: `Did not found trip, please try again..`,
             isAuthenticated: cookies.isAuthenticated
         });
     }
