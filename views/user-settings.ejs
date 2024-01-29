@@ -3,6 +3,14 @@
 </head>
 
 <body class="h-100">
+    
+
+    <% if (req.query.success === 'update-successful') { %>
+        <div class="alert alert-success" role="alert">
+            Update successful!
+        </div>
+    <% } %>
+
     <%- include('includes/navigation.ejs') %>
     <main class="container">
         <!-- User Settings Section -->
@@ -83,6 +91,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <!-- Delete Account Form -->
                                 <form action="/user-delete" method="POST">
+                                    <input type="email" class="form-control" id="email" name="email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" placeholder="example@example.com" readonly title="Cannot be edited" value="<%= userSettings.email %>" hidden>
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                             </div>

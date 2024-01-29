@@ -9,6 +9,8 @@ const { GeneralAPIHandler } = require('../utils/API');
 // Creating an instance of the GeneralAPIHandler class for handling API requests.
 const apiHandler = new GeneralAPIHandler();
 
+
+
 // Handles a GET request to display the sign-in page.
 exports.getSignInPage = (req, res, next) => {
     console.log('sign-in >> getSignInPage:: start.');
@@ -31,7 +33,7 @@ exports.getSignInPage = (req, res, next) => {
     console.log('sign-in >> getSignInPage:: end.');
 
     // Renders the sign-in page for non-authenticated users.
-    return res.render('./auth/sign-in-page', { 
+    return res.render('./auth/sign-in-page', {
         pageTitle: 'Sign-in',
         isAuthenticated: cookies.isAuthenticated
     });
@@ -44,20 +46,21 @@ exports.postSignInPage = async (req, res, next) => {
 
     try {
         console.log('sign-in >> postSignInPage:: start');
-        console.log(`sign-in >> postSignInPage:: body: ${{"email": req.body.email, "password": req.body.password}}`);
+        const { firstName, surName, phoneNum, userName, email, password } = req.body;
 
-        const raw = JSON.stringify({"email": req.body.email, "password": req.body.password});
+        console.log(`sign-in >> postSignInPage:: body: ${{ "email": newUser.email, "password": newUser.password }}`);
 
+        const raw = JSON.stringify({ "email": newUser.email , "password": newUser.password });
+
+        // get toekn from exist user from BACKEND App.
         try {
             // Uses the post method from GeneralAPIHandler to make an API request for authentication.
             const result = await apiHandler.post("authenticate", JSON.parse(raw));
             // cookieHelper.setCookieWithExpire(res, 'email', decodeURIComponent(req.body.email), maxAgeInSeconds);
             cookieHelper.setCookieWithExpire(res, 'token', result.token, maxAgeInSeconds);
+            apiHandler.appendAuthorizationHeader(result.token);
 
-            if (!(apiHandler.headers.has('Authorization'))){
-                apiHandler.appendAuthorizationHeader(result.token);
-            }
-            await apiHandler.get(`app/userinfo/get-specific-user-info?userIdentifier=${decodeURIComponent(req.body.email)}`);
+            await apiHandler.get(`app/userinfo/get-specific-user-info`);
         } catch (error) {
             console.log(error);
             return res.status(400).render('error-page', {

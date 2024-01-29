@@ -8,6 +8,10 @@ const cookieHelper = require('../utils/cookieHelper');
 const { GeneralAPIHandler } = require('../utils/API');
 // Creating an instance of the GeneralAPIHandler class for handling API requests.
 const apiHandler = new GeneralAPIHandler();
+const mongodb = require('mongodb');
+const User = require('../models/user');
+
+const ObjectId = mongodb.ObjectId;
 
 // Handles GET request to display user settings.
 exports.getUserDisplay = async (req, res, next) => {
@@ -26,24 +30,17 @@ exports.getUserDisplay = async (req, res, next) => {
         console.log(cookies.token);
 
         apiHandler.appendAuthorizationHeader(cookies.token);
-        const result = await apiHandler.get(`app/userinfo/get-specific-user-info`);
-
-        console.log(result);
-
-        userData = {
-            "userName": result.userName,
-            "firstName": result.firstName,
-            "surName": result.surName,
-            "email": result.email,
-            "phone": result.phone
-        };
+        const result = await apiHandler.get(`app/userinfo/get-specific-user-info`); // create a new user in the backend app mongodb.
+        const user = await User.findByEmail(result.email); // create a new user in the fronend app mongodb.
+        console.log('User details from mongodb: ', user);
 
 
         console.log('user-settings >> getUserDisplay :: end.');
         return res.render('user-settings', {
             pageTitle: 'Settings',
-            userSettings: userData,
-            isAuthenticated: cookies.isAuthenticated
+            userSettings: user,
+            isAuthenticated: cookies.isAuthenticated,
+            req: req
         });
     } catch (error) {
         // Handle errors appropriately
@@ -52,7 +49,8 @@ exports.getUserDisplay = async (req, res, next) => {
             pageTitle: 'Error',
             error_header: 'Internal Server Error',
             error_description: error.message,
-            isAuthenticated: false
+            isAuthenticated: false,
+            req: req
         });
     }
 };
@@ -77,17 +75,18 @@ exports.putUpdateUser = async (req, res, next) => {
             "phone": req.body.phone
         });
 
-        console.log(`user-settings >> putUpdateUser:: body: ${userData}`);
-
-        // Uses the put method from GeneralAPIHandler to make an API request to update user information.
-        const result = await apiHandler.put("app/userinfo/update-specific-user-info", userData);
+        console.log(`user-settings >> putUpdateUser:: body: `, userData);
+        const result = await apiHandler.put("app/userinfo/update-specific-user-info", userData); // Update the user details in the backend app mongodb.
         console.log(`user-settings >> putUpdateUser:: Update successfully done.`);
 
-        // Update the userData cookie with the new information.
-        cookieHelper.setCookieWithExpire(res, 'userData', JSON.stringify(result), 3600);
+        // Update the user details in the frontend app mongodb.
+        const user = await User.findByEmail(result.email);
+        const updateUser = new User(result.firstName, result.surName, result.phone, result.userName, user.email, user.password, new ObjectId(user._id));
+        updateUser.save();
 
         console.log('user-settings >> putUpdateUser :: end.');
-        res.redirect('/user-settings');
+        res.redirect('/user-settings?success=update-successful');
+
     } catch (error) {
         // Handle errors appropriately
         console.error('Error in putUpdateUser:', error.message);
@@ -113,10 +112,22 @@ exports.deleteUser = async (req, res, next) => {
 
         // Append Authorization header for the API request.
         apiHandler.appendAuthorizationHeader(cookies.token);
+        const user = await User.findByEmail(req.body.email);
+        if (user) {
+            await User.deleteById(user._id);
+            console.log('User deleted successfully.');
+        } else {
+            console.log('User not found.', user._id);
+        }
+
+
+
 
         // Use the delete method from GeneralAPIHandler to make an API request to delete user information.
         const result = await apiHandler.delete(`app/userinfo/delete-specific-user-info`);
         console.log('user-settings >> deleteUser :: end.');
+        cookieHelper.clearCookies(req, res);
+        res.redirect('/');
     } catch (error) {
         // Handle errors appropriately
         console.error('Error in deleteUser:', error.message);

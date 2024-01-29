@@ -8,6 +8,9 @@ const cookieHelper = require('../utils/cookieHelper');
 const { GeneralAPIHandler } = require('../utils/API');
 // Creating an instance of the GeneralAPIHandler class for handling API requests.
 const apiHandler = new GeneralAPIHandler();
+// Creating an instance of the User class.
+const User = require('../models/user');
+
 
 // Handles GET request to get the sign-up page.
 exports.getSignUpPage = (req, res, next) => {
@@ -33,9 +36,9 @@ exports.getSignUpPage = (req, res, next) => {
     }
 
     console.log('sign-up >> getSignUpPage:: end.');
-    
+
     // Render the sign-up page for non-authenticated users.
-    return res.render('./auth/sign-up-page', { 
+    return res.render('./auth/sign-up-page', {
         pageTitle: 'Sign-up',
         isAuthenticated: cookies.isAuthenticated
     });
@@ -47,6 +50,14 @@ exports.postSignUpPage = async (req, res, next) => {
 
     // Check if the password and confirm_password match.
     if (req.body.password === req.body.confirm_password) {
+        const email = req.body.email;
+        const password = req.body.password;
+        const userName = req.body.userName;
+        const firstName = req.body.firstName;
+        const surName = req.body.surName;
+        const phone = req.body.phone;
+
+        const user = new User(firstName, surName, phone, userName, email, password);
 
         // Converts the user's input into a JSON string.
         const raw = JSON.stringify(
@@ -65,9 +76,20 @@ exports.postSignUpPage = async (req, res, next) => {
         );
         console.log(`sign-in >> postSignInPage:: body: ${raw}`);
 
+
+        user.save()
+        .then(res => {
+            console.log('Created User Instance.');
+        })
+        .catch(err => {
+            console.log('Failed to create an instance of USER: ',err);
+        });
+
+
         try {
             // Uses the post method from GeneralAPIHandler to make an API request for authentication.
             const result = await apiHandler.post("user", JSON.parse(raw));
+
             console.log(`sign-up >> postSignUpPage:: Sign-up successfully done.`);
 
             const maxAgeInSeconds = 5 * 60 * 60; // 5 hours in seconds
