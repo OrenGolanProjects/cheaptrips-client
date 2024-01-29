@@ -10,7 +10,6 @@ const { GeneralAPIHandler } = require('../utils/API');
 const apiHandler = new GeneralAPIHandler();
 
 
-
 // Handles a GET request to display the sign-in page.
 exports.getSignInPage = (req, res, next) => {
     console.log('sign-in >> getSignInPage:: start.');
@@ -46,11 +45,10 @@ exports.postSignInPage = async (req, res, next) => {
 
     try {
         console.log('sign-in >> postSignInPage:: start');
-        const { firstName, surName, phoneNum, userName, email, password } = req.body;
 
-        console.log(`sign-in >> postSignInPage:: body: ${{ "email": newUser.email, "password": newUser.password }}`);
+        console.log(`sign-in >> postSignInPage:: body: ${{ "email": req.body.email, "password": req.body.password }}`);
 
-        const raw = JSON.stringify({ "email": newUser.email , "password": newUser.password });
+        const raw = JSON.stringify({ "email": req.body.email , "password": req.body.password });
 
         // get toekn from exist user from BACKEND App.
         try {

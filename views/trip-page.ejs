@@ -25,7 +25,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     <h3 >Currency: <%= flightData.currency %></h3>
                 </div>
                 </div>
@@ -45,10 +45,10 @@
                                         <div class="ticket-details ">
                                             <h1><%= flightData.ticketKeys[j].airlineDetails.name %> - <%= flightData.ticketKeys[j].flightNumber %></h1>
                                             <h3>Price: <%= flightData.ticketKeys[j].price %> <%= flightData.currency %></h6>
-                                            <h6>Transfers: <%= flightData.ticketKeys[j].transfers %></h6>
-                                            <h6>Departure Time: <%= flightData.ticketKeys[j].departureAt %></h6>
-                                            <h6>Return Time: <%= flightData.ticketKeys[j].returnAt %></h6>
-                                            <h6>Expires At: <%= flightData.ticketKeys[j].expiresAt %></h6>
+                                            <h3>Transfers: <%= flightData.ticketKeys[j].transfers %></h3>
+                                            <h6>Departure Time: <%= new Date(flightData.ticketKeys[j].departureAt).toLocaleString() %></h6>
+                                            <h6>Return Time: <%= new Date(flightData.ticketKeys[j].returnAt).toLocaleString() %></h6>
+                                            <h6>Expires At: <%= new Date(flightData.ticketKeys[j].expiresAt).toLocaleString() %></h6>
                                             <h6>Ticket Index: <%= flightData.ticketKeys[j].ticketIndex %></h6>
                                             <!-- Airline Details -->
                                             <h6>Airline Code: <%= flightData.ticketKeys[j].airlineDetails.airlineIATACode %></h6>
@@ -71,11 +71,10 @@
                     <span class="sr-only">Next</span>
                     <span class="carousel-control-next-icon" aria-hidden="true"></span></a>
             </div>
-            
 
-            </div>
+
         </section>
-
+        <a class="btn btn-primary button" href=<%=`https://www.aviasales.com/?marker=485630.Zz3371ee3e144040ce80190a3-485630&params=${flightData.origin.city.cityIATACode}${flightData.destination.city.cityIATACode}1`  %>>Click for sachdule a flight.</a>
         <!-- News Section -->
         <section class="section news-section  ">
             <div class="container section-header">

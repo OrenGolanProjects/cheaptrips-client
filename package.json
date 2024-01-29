@@ -4,14 +4,12 @@
   "description": "frontend application to handle client requests",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
   "author": "Oren Golan",
   "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
-    "chai": "^5.0.3",
-    "mocha": "^10.2.0",
     "nodemon": "^3.0.2"
   },
   "dependencies": {

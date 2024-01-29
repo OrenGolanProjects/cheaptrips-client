@@ -7,6 +7,7 @@ const express = require('express');             // Importing the 'express' libra
 const bodyParser = require('body-parser');      // Importing the 'body-parser' middleware to handle HTTP request bodies
 const path = require('path');
 const { mongoConnect, getDb } = require('./utils/database'); // Adjust the path accordingly
+const { globalErrorHandler } = require('./utils/GlobalErrorHandler'); // Adjust the path accordingly
 
 
 // ============ CONTROLLER ===============
@@ -42,6 +43,9 @@ app.use(searchTripRoutes.routes);       // Managing the routes for searching a t
 
 // ============ ERROR ================
 app.use(errorController.get404Page);    // Activating the Page Not Found error from the controller.
+app.use(globalErrorHandler); // Add the global error handler
+
+
 
 // =============== LISTENER =============
 // Connect to MongoDB

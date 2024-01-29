@@ -65,18 +65,17 @@ exports.postSearchTrip = async (req, res, next) => {
             const status = responseOrigin.status;
             return res.status(status).render('error-page', {
                 pageTitle: 'Error',
-                error_header: 'Invalid Origin!',
+                error_header: 'Origin did not found!',
                 error_description: status,
                 isAuthenticated: cookies.isAuthenticated
             });
         }
 
         if (responseDestination.length === 0) {
-            const status = responseDestination.status;
-            return res.status(status).render('error-page', {
+            return res.render('error-page', {
                 pageTitle: 'Error',
-                error_header: 'Invalid Destination!',
-                error_description: (status, errorText),
+                error_header: 'Destination did not found!',
+                error_description: (responseDestination),
                 isAuthenticated: cookies.isAuthenticated
             });
         }
