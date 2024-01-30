@@ -80,10 +80,10 @@ exports.postSearchTrip = async (req, res, next) => {
         if (responseOrigin.length === 0) {
             console.log(responseOrigin);
             const status = responseOrigin.status;
-            return res.status(status).render('error-page', {
+            return res.render('error-page', {
                 pageTitle: 'Error',
                 error_header: 'Origin did not found!',
-                error_description: status,
+                error_description: responseDestination,
                 isAuthenticated: cookies.isAuthenticated
             });
         }
