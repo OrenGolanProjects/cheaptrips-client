@@ -5,14 +5,14 @@
     <%- include('includes/navigation.ejs') %>
 
     <!-- Main content container -->
-    <div class="container h-75 d-flex justify-content-center align-items-center">
+    <div class="container d-flex justify-content-center align-items-center">
         <!-- Invalid Login Section -->
         <section class="invalid-login-section">
             <!-- Form within a border -->
-            <form class="form_border p-3 text-center">
+            <form class="form_border mb-4 p-3 text-center">
                 <h1 class="big-heading mb-4"><%= error_header %></h1>
-                <!-- Error Image -->
-                <img src="https://media4.giphy.com/media/aYpmlCXgX9dc09dbpl/200w.webp?cid=ecf05e47lqchjk113p9o4tphyvn4n88bh3iv6abay8wuyu2o&rid=200w.webp&ct=g" alt="Error Image" class="mb-4">
+                <!-- Error Image with dynamic resizing -->
+                <img src="https://media4.giphy.com/media/aYpmlCXgX9dc09dbpl/200w.webp?cid=ecf05e47lqchjk113p9o4tphyvn4n88bh3iv6abay8wuyu2o&rid=200w.webp&ct=g" alt="Error Image" class="img-fluid mb-4">
                 <!-- Error Description -->
                 <h3 class="description mb-4"><%= error_description %></h3>
                 <!-- Link to Home Page -->
