@@ -18,13 +18,17 @@
                             <strong>
                                 <h3 class="mb-4">Search Trip By</h3>
                                 <small class="text-danger">Choose one of: months or dates</small><br>
-                                <div>
+                                <div class="radio-group">
                                     <strong>
-                                        <input type="radio" id="trip-months" name="tripType" value="months" checked onclick="toggleDateInputs(false)">
-                                        <label for="trip-months">Search By Months</label>
-                            
-                                        <input type="radio" id="trip-dates" name="tripType" value="dates" onclick="toggleDateInputs(true)">
-                                        <label for="trip-dates">Search By Dates</label>
+                                        <div>
+                                            <input type="radio" id="trip-dates" name="tripType" value="dates" onclick="toggleDateInputs(true)">
+                                            <label for="trip-dates">Search By Dates</label>
+                                        </div>
+                                
+                                        <div>
+                                            <input type="radio" id="trip-months" name="tripType" value="months" checked onclick="toggleDateInputs(false)">
+                                            <label for="trip-months">Search By Months</label>
+                                        </div>
                                     </strong>
                                 </div>
                             </strong>
@@ -69,7 +73,7 @@
                             <label for="departureDate"  class="form-label"><strong>Departure Date</strong></label>
                             <input type="date" class="form-control" id="departureDate" name="departureDate">
                         </div>
-        
+
                         <div class="mb-3">
                             <label for="returnDate" class="form-label"><strong>Return Date:</strong></label>
                             <input type="date" class="form-control" id="returnDate" name="returnDate">

@@ -19,7 +19,6 @@
 <!-- -------------------- -->
 <!-- search-trip.ejs file -->
 <!-- -------------------- -->
-
 <!-- Function to Manage Range Selection -->
 <script>
     function updateDistance(value) {
@@ -60,16 +59,24 @@
         const monthsDiv = document.getElementById('months');
         // const departureDateInput = document.getElementById('dates');
         const tripMonthsRadio = document.getElementById('trip-months');
+        const departureDateInput = document.getElementById('departureDate');
+        const returnDateInput = document.getElementById('returnDate');
+
 
         // If "Search By Months" is selected, hide date inputs; otherwise, show them
         if (tripMonthsRadio.checked) {
             monthsDiv.classList.remove('col-md-6');
             monthsDiv.classList.add('sign');
             dates.style.display = 'none';
+            departureDateInput.removeAttribute('required');
+            returnDateInput.removeAttribute('required');
+
         } else {
             dates.style.display = 'block';
             monthsDiv.classList.remove('sign');
             monthsDiv.classList.add('col-md-6');
+            departureDateInput.setAttribute('required', true);
+            returnDateInput.setAttribute('required', true);
         }
     }
 
