@@ -9,6 +9,19 @@ const { GeneralAPIHandler } = require('../utils/API');
 // Creating an instance of the GeneralAPIHandler class for handling API requests.
 const apiHandler = new GeneralAPIHandler();
 
+
+function formatDateToDDMM(inputDate) {
+    // Parse the input date string into a Date object
+    const date = new Date(inputDate);
+
+    // Extract day and month components
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+
+    // Return the formatted string "ddMM"
+    return `${day}${month}`;
+}
+
 // GET route for rendering the search trip page
 exports.getSearchTrip = (req, res, next) => {
     console.log('search-trip >> getSearchTrip :: start.');
@@ -32,11 +45,15 @@ exports.getSearchTrip = (req, res, next) => {
 exports.postSearchTrip = async (req, res, next) => {
     let userData = {};
     let tripResponse;
+    let departureAt_ddMM;
+    let returnAt_ddMM;
+    
     try {
         console.log('search-trip >> postSearchTrip :: start.');
 
         // Fetch existing cookies
         const cookies = cookieHelper.extractCookies(req);
+
 
         // Assigning the origin and destination values from the /search-trips.
         const OriginCityNameString = req.body.origin;
@@ -95,7 +112,6 @@ exports.postSearchTrip = async (req, res, next) => {
                 userData: JSON.stringify(userData),
                 departureDate : req.body.departureDate,
                 returnDate : req.body.returnDate
-
             });
         }
 
@@ -111,13 +127,28 @@ exports.postSearchTrip = async (req, res, next) => {
         console.log(userData);
         console.log('before execute the search trip api');
 
+
+
+
         if ((req.body.departureDate !== '' && req.body.departureDate !== null && req.body.departureDate !== undefined) &&
             (req.body.returnDate !== '' && req.body.returnDate !== null && req.body.returnDate !== undefined)
         ) {
+            departureAt_ddMM = formatDateToDDMM(req.body.departureDate);
+            returnAt_ddMM = formatDateToDDMM(req.body.returnDate);
+
+            console.log('departureAt_ddMM: ',departureAt_ddMM,' returnAt_ddMM: ',returnAt_ddMM);
+
             console.log('start execute generate-trip-by-dates');
             tripResponse = await apiHandler.post(`cheap-trip/generate-trip-by-dates?depart_date=${req.body.departureDate}&return_date=${req.body.returnDate}`, userData);
             console.log('generate-trip-by-dates done successfully.');
         } else {
+            departureAt_ddMM = formatDateToDDMM(new Date());    
+            // Corrected the line to calculate returnAt_ddMM
+            const today = new Date();
+            returnAt_ddMM = formatDateToDDMM(new Date(today.setDate(today.getDate() + 3)));
+
+            console.log('departureAt_ddMM: ',departureAt_ddMM,' returnAt_ddMM: ',returnAt_ddMM);
+
             console.log('start execute generate-monthly-trip');
             tripResponse = await apiHandler.post(`cheap-trip/generate-monthly-trip`, userData);
             console.log('generate-monthly-trip done successfully.');
@@ -131,7 +162,9 @@ exports.postSearchTrip = async (req, res, next) => {
             newsData: tripResponse.news,
             travelPlacesData: tripResponse.placesData,
             returnDate: req.body.returnDate,
-            departureDate: req.body.departureDate
+            departureDate: req.body.departureDate,
+            departureAt_ddMM : departureAt_ddMM,
+            returnAt_ddMM : returnAt_ddMM
         });
     } catch (error) {
         console.error(error);
@@ -148,6 +181,9 @@ exports.postSearchTrip = async (req, res, next) => {
 // POST route for handling the selection of a city from the dropdown
 exports.postSelectCity = async (req, res, next) => {
     let tripResponse;
+    let departureAt_ddMM;
+    let returnAt_ddMM;
+
     try {
         console.log('search-trip >> postSearchCity :: start.');
         const cookies = cookieHelper.extractCookies(req);
@@ -164,10 +200,25 @@ exports.postSelectCity = async (req, res, next) => {
                 if ((req.body.departureDate !== '' && req.body.departureDate !== null && req.body.departureDate !== undefined) &&
                 (req.body.returnDate !== '' && req.body.returnDate !== null && req.body.returnDate !== undefined)
             ) {
+                departureAt_ddMM = formatDateToDDMM(req.body.departureDate);
+                returnAt_ddMM = formatDateToDDMM(req.body.returnDate);
+
+                console.log('departureAt_ddMM: ',departureAt_ddMM,' returnAt_ddMM: ',returnAt_ddMM);
+
+
                 console.log('start execute generate-trip-by-dates');
                 tripResponse = await apiHandler.post(`cheap-trip/generate-trip-by-dates?depart_date=${req.body.departureDate}&return_date=${req.body.returnDate}`, userData);
                 console.log('generate-trip-by-dates done successfully.');
             } else {
+
+
+                departureAt_ddMM = formatDateToDDMM(new Date());    
+                // Corrected the line to calculate returnAt_ddMM
+                const today = new Date();
+                returnAt_ddMM = formatDateToDDMM(new Date(today.setDate(today.getDate() + 3)));
+
+                console.log('departureAt_ddMM: ',departureAt_ddMM,' returnAt_ddMM: ',returnAt_ddMM);
+
                 console.log('start execute generate-monthly-trip');
                 tripResponse = await apiHandler.post(`cheap-trip/generate-monthly-trip`, userData);
                 console.log('generate-monthly-trip done successfully.');
@@ -187,7 +238,9 @@ exports.postSelectCity = async (req, res, next) => {
             isAuthenticated: cookies.isAuthenticated,
             flightData: tripResponse.flight,
             newsData: tripResponse.news,
-            travelPlacesData: tripResponse.placesData
+            travelPlacesData: tripResponse.placesData,
+            departureAt_ddMM : departureAt_ddMM,
+            returnAt_ddMM : returnAt_ddMM
         });
     } catch (error) {
         const cookies = cookieHelper.extractCookies(req);

@@ -74,7 +74,8 @@
 
 
         </section>
-        <a class="btn btn-primary button" href=<%=`https://www.aviasales.com/?marker=485630.Zz3371ee3e144040ce80190a3-485630&params=${flightData.origin.city.cityIATACode}${flightData.destination.city.cityIATACode}1`  %>>Click for sachdule a flight.</a>
+        <a class="btn btn-primary button" href=<%=`https://www.aviasales.com/search/${flightData.origin.city.cityIATACode}${departureAt_ddMM}${flightData.destination.city.cityIATACode}${returnAt_ddMM}1?marker=485630`  %>>Click for sachdule a flight.</a>
+        
         <!-- News Section -->
         <section class="section news-section  ">
             <div class="container section-header">
